@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memoria Studio — Fotografía Profesional</title>
+  <style>
+    :root {
+      --bg: #050608;
+      --bg-alt: #0b0d12;
+      --accent: #f5b754;
+      --text: #f5f5f5;
+      --muted: #a0a4b8;
+      --border: #1b1e27;
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: radial-gradient(circle at top, #151827 0, #050608 55%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout base */
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(5, 6, 8, 0.9), rgba(5, 6, 8, 0.6));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+
+    .logo-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 183, 84, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 0, #f5b754 0, #f5b754 18%, #050608 60%);
+      box-shadow: 0 0 18px rgba(245, 183, 84, 0.45);
+      font-size: 0.7rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.1rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.55rem 1.4rem;
+      border: 1px solid rgba(245, 183, 84, 0.6);
+      background: radial-gradient(circle at 0 0, rgba(245, 183, 84, 0.25), transparent 55%);
+      color: var(--text);
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .btn:hover {
+      background: rgba(245, 183, 84, 0.12);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .btn-outline {
+      border-color: rgba(255, 255, 255, 0.12);
+      background: transparent;
+      color: var(--muted);
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(245, 183, 84, 0.6);
+      color: var(--text);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .section {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem;
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 3rem;
+      align-items: center;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(11, 13, 18, 0.9);
+      color: var(--muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 1.2rem;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(245, 183, 84, 0.8);
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 4vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      color: var(--muted);
+      max-width: 32rem;
+      font-size: 0.98rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-meta-item strong {
+      display: block;
+      color: var(--text);
+      font-size: 1.1rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: radial-gradient(circle at 0 0, rgba(245, 183, 84, 0.18), transparent 55%), linear-gradient(145deg, #050608, #10121a);
+      box-shadow:
+        0 26px 60px rgba(0, 0, 0, 0.85),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
+    }
+
+    .hero-card-inner {
+      padding: 1.4rem;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 1rem;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .hero-photo {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: radial-gradient(circle at 50% 0, rgba(245, 183, 84, 0.3), transparent 60%);
+      aspect-ratio: 4 / 5;
+      display: flex;
+      align-items: stretch;
+      justify-content: stretch;
+    }
+
+    .hero-photo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("https://images.pexels.com/photos/167832/pexels-photo-167832.jpeg?auto=compress&cs=tinysrgb&w=1200");
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.05) contrast(1.05);
+      transform: scale(1.02);
+    }
+
+    .hero-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5, 6, 8, 0.9), transparent 40%);
+      mix-blend-mode: multiply;
+    }
+
+    .hero-photo-footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1rem 1.1rem 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #f5f5f5;
+      font-size: 0.8rem;
+      z-index: 2;
+    }
+
+    .hero-photo-footer span {
+      opacity: 0.85;
+    }
+
+    .hero-photo-footer strong {
+      font-size: 0.9rem;
+    }
+
+    .hero-floating {
+      position: absolute;
+      right: -10px;
+      top: 18%;
+      padding: 0.7rem 0.9rem;
+      border-radius: 16px;
+      background: rgba(5, 6, 8, 0.96);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      min-width: 150px;
+    }
+
+    .hero-floating strong {
+      color: var(--text);
+      font-size: 0.8rem;
+    }
+
+    .hero-floating small {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(245, 183, 84, 0.9);
+    }
+
+    .hero-floating-meter {
+      margin-top: 0.4rem;
+      width: 100%;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      overflow: hidden;
+    }
+
+    .hero-floating-meter span {
+      display: block;
+      width: 82%;
+      height: 100%;
+      background: linear-gradient(90deg, #f5b754, #ffdf9b);
+      box-shadow: 0 0 12px rgba(245, 183, 84, 0.9);
+    }
+
+    /* Sección portfolio */
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      letter-spacing: -0.03em;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+      max-width: 26rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .grid-portfolio {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .portfolio-card {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #050608;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
+      border-color: rgba(245, 183, 84, 0.6);
+    }
+
+    .portfolio-image {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+    }
+
+    .portfolio-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.02);
+      transition: transform 0.25s ease;
+    }
+
+    .portfolio-card:hover .portfolio-image img {
+      transform: scale(1.06);
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5, 6, 8, 0.9), transparent 40%);
+    }
+
+    .portfolio-info {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 1rem 1.1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .portfolio-info strong {
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .portfolio-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      align-self: flex-start;
+    }
+
+    /* Sobre mí */
+
+    .about {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      max-width: 32rem;
+    }
+
+    .about-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .stat {
+      min-width: 120px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 0.1rem;
+    }
+
+    .stat span {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .about-card {
+      border-radius: 20px;
+      padding: 1.4rem;
+      background: radial-gradient(circle at 0 0, rgba(245, 183, 84, 0.18), transparent 55%), #050608;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
+      display: grid;
+      gap: 1rem;
+    }
+
+    .about-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #f5b754, #ffdf9b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #050608;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .about-card-body {
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .about-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .rating span {
+      color: var(--accent);
+    }
+
+    /* Contacto */
+
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    .contact-text p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 30rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .contact-list strong {
+      color: var(--text);
+    }
+
+    .contact-form {
+      border-radius: 20px;
+      padding: 1.4rem 1.5rem;
+      background: #050608;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
+      display: grid;
+      gap: 1rem;
+    }
+
+    .form-row {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .form-row-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(5, 6, 8, 0.9);
+      padding: 0.7rem 0.9rem;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    textarea {
+      border-radius: 14px;
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(245, 183, 84, 0.8);
+      box-shadow: 0 0 0 1px rgba(245, 183, 84, 0.4);
+      background: rgba(5, 6, 8, 1);
+    }
+
+    .form-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.2rem;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+    }
+
+    /* Responsive */
+
+    @media (max-width: 960px) {
+      .hero,
+      .about,
+      .contact {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 3rem;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .hero-floating {
+        right: 10px;
+      }
+
+      .grid-portfolio {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        padding-inline: 1rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        gap: 2.2rem;
+      }
+
+      .hero-title {
+        font-size: 2.1rem;
+      }
+
+      .hero-meta {
+        gap: 1rem;
+      }
+
+      .grid-portfolio {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .about-card,
+      .contact-form {
+        padding: 1.1rem 1.1rem;
+      }
+
+      .form-row-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .form-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <nav class="nav">
+        <a href="#" class="logo">
+          <div class="logo-mark">M</div>
+          <span>Memoria Studio</span>
+        </a>
+        <div class="nav-links">
+          <a href="#portfolio">Portfolio</a>
+          <a href="#about">Sobre mí</a>
+          <a href="#contact">Contacto</a>
+        </div>
+        <div class="nav-cta">
+          <button class="btn-outline btn" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">
+            Ver trabajos
+          </button>
+          <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+            Reservar sesión
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="section hero" id="inicio">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Fotografía editorial & lifestyle
+          </div>
+          <h1 class="hero-title">
+            Historias reales, <span>luz perfecta</span>.
+          </h1>
+          <p class="hero-subtitle">
+            Sesiones de fotografía profesional en Barcelona y alrededores. Retratos, moda, marca personal y campañas editoriales
+            con una estética cinematográfica, limpia y atemporal.
+          </p>
+          <div class="hero-actions">
+            <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+              Agenda tu sesión
+            </button>
+            <button class="btn-outline btn" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">
+              Ver portfolio completo
+            </button>
+          </div>
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <strong>10+ años</strong>
+              Experiencia profesional
+            </div>
+            <div class="hero-meta-item">
+              <strong>250+</strong>
+              Sesiones realizadas
+            </div>
+            <div class="hero-meta-item">
+              <strong>4.9/5</strong>
+              Valoración de clientes
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="hero-card-inner">
+              <div class="hero-tag">
+                <span class="eyebrow-dot"></span>
+                Sesión editorial
+              </div>
+              <div class="hero-photo">
+                <div class="hero-photo-overlay"></div>
+                <div class="hero-photo-footer">
+                  <div>
+                    <span>Editorial · Barcelona</span>
+                    <strong>“Golden Hour Series”</strong>
+                  </div>
+                  <span>2025</span>
+                </div>
+              </div>
+              <div class="hero-card-footer">
+                <small style="color: var(--muted); text-transform: uppercase; letter-spacing: 0.16em;">
+                  Memoria Studio · Fotografía contemporánea
+                </small>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-floating">
+            <small>Disponibilidad</small>
+            <strong>Reservas abiertas · Primavera 2026</strong>
+            <p>Sesiones limitadas para proyectos personales, marcas y editoriales.</p>
+            <div class="hero-floating-meter">
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PORTFOLIO -->
+      <section class="section" id="portfolio">
+        <div class="section-header">
+          <div>
+            <div class="pill">
+              <span class="eyebrow-dot"></span>
+              Portfolio seleccionado
+            </div>
+            <h2 class="section-title">Colecciones destacadas</h2>
+          </div>
+          <p class="section-subtitle">
+            Una selección de proyectos recientes: retrato editorial, moda, lifestyle y campañas de marca. Cada sesión está
+            diseñada para transmitir la esencia real de la persona o la marca.
+          </p>
+        </div>
+
+        <div class="grid grid-portfolio">
+          <article class="portfolio-card">
+            <div class="portfolio-image">
+              <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Retrato editorial" />
+              <div class="portfolio-overlay"></div>
+              <div class="portfolio-info">
+                <div class="portfolio-tag">
+                  Editorial
+                </div>
+                <strong>Retrato editorial urbano</strong>
+                <span>Sesión en localización · Barcelona</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="portfolio-card">
+            <div class="portfolio-image">
+              <img src="https://images.pexels.com/photos/167404/pexels-photo-167404.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Moda y campaña" />
+              <div class="portfolio-overlay"></div>
+              <div class="portfolio-info">
+                <div class="portfolio-tag">
+                  Moda
+                </div>
+                <strong>Campaña cápsula FW</strong>
+                <span>Dirección de arte, estilismo y fotografía</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="portfolio-card">
+            <div class="portfolio-image">
+              <img src="https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Marca personal" />
+              <div class="portfolio-overlay"></div>
+              <div class="portfolio-info">
+                <div class="portfolio-tag">
+                  Marca personal
+                </div>
+                <strong>Branding para creativos</strong>
+                <span>Contenido visual para redes y web</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SOBRE MÍ -->
+      <section class="section" id="about">
+        <div class="about">
+          <div class="about-text">
+            <div class="pill">
+              <span class="eyebrow-dot"></span>
+              Sobre Memoria Studio
+            </div>
+            <h2 class="section-title" style="margin-top: 0.6rem; margin-bottom: 0.8rem;">
+              Fotografía con intención, más allá de la pose.
+            </h2>
+            <p>
+              Trabajo con luz natural y esquemas de iluminación minimalistas para crear imágenes limpias, honestas y
+              sofisticadas. Cada sesión se construye desde la conversación: qué quieres contar, cómo quieres verte y qué
+              necesitas transmitir.
+            </p>
+            <p>
+              Acompaño todo el proceso: desde la idea y el moodboard hasta la selección final y la entrega optimizada para
+              web, redes y print.
+            </p>
+
+            <div class="about-stats">
+              <div class="stat">
+                <strong>+80</strong>
+                <span>Marcas fotografiadas</span>
+              </div>
+              <div class="stat">
+                <strong>3</strong>
+                <span>Ciudades base</span>
+              </div>
+              <div class="stat">
+                <strong>24–72h</strong>
+                <span>Entrega preview</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="about-card">
+            <div class="about-card-header">
+              <div style="display:flex; align-items:center; gap:0.7rem;">
+                <div class="avatar">M</div>
+                <div>
+                  <strong style="font-size:0.9rem;">Memoria</strong>
+                  <div style="font-size:0.75rem; color:var(--muted);">Fotógrafa & directora de arte</div>
+                </div>
+              </div>
+              <div class="rating">
+                <span>★</span> 4.9 · 120 reseñas
+              </div>
+            </div>
+            <div class="about-card-body">
+              “Me interesa capturar la parte más honesta de cada persona. No busco la foto perfecta, sino la imagen que
+              realmente se siente tuya.”
+            </div>
+            <div class="about-card-footer">
+              <span>Disponible para proyectos en Barcelona, Madrid y Europa.</span>
+              <button class="btn-outline btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+                Hablemos de tu proyecto
+              </button>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- CONTACTO -->
+      <section class="section" id="contact">
+        <div class="contact">
+          <div class="contact-text">
+            <div class="pill">
+              <span class="eyebrow-dot"></span>
+              Contacto & reservas
+            </div>
+            <h2 class="section-title" style="margin-top:0.6rem; margin-bottom:0.8rem;">
+              Cuéntame qué quieres fotografiar.
+            </h2>
+            <p>
+              Rellena el formulario y te responderé en menos de 24 horas con opciones de fecha, propuesta de sesión y
+              presupuesto detallado.
+            </p>
+            <ul class="contact-list">
+              <li><strong>Email:</strong> hola@memoriastudio.com</li>
+              <li><strong>Ubicación:</strong> Barcelona, sesiones en estudio y exterior</li>
+              <li><strong>Idiomas:</strong> Español · Català · English</li>
+            </ul>
+          </div>
+
+          <form class="contact-form" onsubmit="event.preventDefault(); alert('Gracias por tu mensaje. Te responderé muy pronto.');">
+            <div class="form-row form-row-2">
+              <div>
+                <label for="name">Nombre completo</label>
+                <input id="name" type="text" placeholder="Tu nombre" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="tu@email.com" required />
+              </div>
+            </div>
+
+            <div class="form-row form-row-2">
+              <div>
+                <label for="type">Tipo de sesión</label>
+                <input id="type" type="text" placeholder="Retrato, marca personal, editorial..." />
+              </div>
+              <div>
+                <label for="date">Fecha aproximada</label>
+                <input id="date" type="text" placeholder="Mes / rango de fechas" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div>
+                <label for="message">Cuéntame un poco más</label>
+                <textarea id="message" placeholder="Qué necesitas, dónde te gustaría hacer la sesión, referencias..."></textarea>
+              </div>
+            </div>
+
+            <div class="form-footer">
+              <span>Tu mensaje se enviará de forma segura. No comparto tus datos con terceros.</span>
+              <button class="btn" type="submit">Enviar mensaje</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <span>© 2026 Memoria Studio · Fotografía profesional</span>
+        <div class="footer-links">
+          <a href="#portfolio">Portfolio</a>
+          <a href="#about">Sobre mí</a>
+          <a href="#contact">Contacto</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
