@@ -3,30 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Memoria Studio — Fotografía Profesional</title>
+  <title>Portfolio Cinematográfico – Tu Nombre</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #050608;
-      --bg-alt: #0b0d12;
-      --accent: #f5b754;
+      --bg: #05070b;
+      --bg-soft: #0b0f18;
+      --accent: #e0b56f;
+      --accent-soft: rgba(224, 181, 111, 0.2);
       --text: #f5f5f5;
-      --muted: #a0a4b8;
-      --border: #1b1e27;
-      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      --muted: #9a9a9a;
+      --danger: #ff4b4b;
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: var(--font-main);
-      background: radial-gradient(circle at top, #151827 0, #050608 55%);
+      font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #151b2b 0, #05070b 55%);
       color: var(--text);
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     a {
@@ -39,78 +44,74 @@
       display: block;
     }
 
-    /* Layout base */
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    /* NAVBAR */
 
     header {
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 20;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(to bottom, rgba(5, 6, 8, 0.9), rgba(5, 6, 8, 0.6));
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: linear-gradient(to bottom, rgba(5, 7, 11, 0.95), rgba(5, 7, 11, 0.6), transparent);
+      backdrop-filter: blur(12px);
     }
 
     .nav {
-      max-width: 1120px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 1rem 1.5rem;
+      padding: 1.2rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
     }
 
     .logo {
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.18em;
+      font-size: 0.8rem;
       text-transform: uppercase;
-      font-size: 0.85rem;
     }
 
     .logo-mark {
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      border: 1px solid rgba(245, 183, 84, 0.5);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1px solid var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at 30% 0, #f5b754 0, #f5b754 18%, #050608 60%);
-      box-shadow: 0 0 18px rgba(245, 183, 84, 0.45);
       font-size: 0.7rem;
     }
 
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      font-size: 0.9rem;
-      color: var(--muted);
+      gap: 1.8rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
     }
 
     .nav-links a {
       position: relative;
-      padding-bottom: 0.1rem;
+      color: var(--muted);
+      transition: color 0.25s ease;
     }
 
     .nav-links a::after {
       content: "";
       position: absolute;
       left: 0;
-      bottom: 0;
+      bottom: -0.4rem;
       width: 0;
       height: 1px;
       background: var(--accent);
-      transition: width 0.2s ease;
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
     }
 
     .nav-links a:hover::after {
@@ -118,90 +119,53 @@
     }
 
     .nav-cta {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .btn {
-      border-radius: 999px;
       padding: 0.55rem 1.4rem;
-      border: 1px solid rgba(245, 183, 84, 0.6);
-      background: radial-gradient(circle at 0 0, rgba(245, 183, 84, 0.25), transparent 55%);
-      color: var(--text);
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      font-size: 0.8rem;
       text-transform: uppercase;
-      font-weight: 500;
+      letter-spacing: 0.18em;
+      background: radial-gradient(circle at top left, rgba(224, 181, 111, 0.18), transparent 55%);
       cursor: pointer;
-      transition: all 0.18s ease;
+      transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .btn:hover {
-      background: rgba(245, 183, 84, 0.12);
+    .nav-cta:hover {
+      background: var(--accent-soft);
       transform: translateY(-1px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     }
 
-    .btn-outline {
-      border-color: rgba(255, 255, 255, 0.12);
-      background: transparent;
-      color: var(--muted);
-    }
-
-    .btn-outline:hover {
-      border-color: rgba(245, 183, 84, 0.6);
-      color: var(--text);
-    }
-
-    main {
-      flex: 1;
-    }
-
-    .section {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 3.5rem 1.5rem;
-    }
-
-    /* Hero */
+    /* HERO */
 
     .hero {
+      min-height: 100vh;
       display: grid;
       grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 7rem 1.5rem 4rem;
       gap: 3rem;
       align-items: center;
-      padding-top: 4rem;
-      padding-bottom: 4rem;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(11, 13, 18, 0.9);
-      color: var(--muted);
-      font-size: 0.75rem;
+    .hero-text {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      margin-bottom: 1.2rem;
-    }
-
-    .eyebrow-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 12px rgba(245, 183, 84, 0.8);
+      color: var(--muted);
+      margin-bottom: 1rem;
     }
 
     .hero-title {
-      font-size: clamp(2.4rem, 4vw, 3.4rem);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 4vw, 3.6rem);
+      line-height: 1.1;
       margin-bottom: 1.2rem;
     }
 
@@ -210,16 +174,9 @@
     }
 
     .hero-subtitle {
-      color: var(--muted);
       max-width: 32rem;
-      font-size: 0.98rem;
-      margin-bottom: 1.8rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
+      color: var(--muted);
+      font-size: 0.95rem;
       margin-bottom: 2rem;
     }
 
@@ -227,267 +184,344 @@
       display: flex;
       flex-wrap: wrap;
       gap: 1.5rem;
+      margin-bottom: 2.2rem;
       font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
       color: var(--muted);
     }
 
-    .hero-meta-item strong {
-      display: block;
-      color: var(--text);
+    .hero-meta span {
+      position: relative;
+      padding-left: 1.4rem;
+    }
+
+    .hero-meta span::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 0.8rem;
+      height: 1px;
+      background: var(--accent);
+      transform: translateY(-50%);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      padding: 0.9rem 1.8rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, var(--accent), #f3d49a);
+      color: #1a1207;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      cursor: pointer;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.85);
+    }
+
+    .btn-ghost {
+      padding: 0.85rem 1.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(5, 7, 11, 0.7);
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn-ghost span {
       font-size: 1.1rem;
     }
 
-    .hero-visual {
-      position: relative;
-      isolation: isolate;
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.3);
     }
 
-    .hero-card {
+    .hero-note {
+      margin-top: 1.4rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      max-width: 22rem;
+    }
+
+    .hero-note strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .hero-media {
+      position: relative;
+    }
+
+    .hero-frame {
       position: relative;
       border-radius: 26px;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      background: radial-gradient(circle at 0 0, rgba(245, 183, 84, 0.18), transparent 55%), linear-gradient(145deg, #050608, #10121a);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow:
-        0 26px 60px rgba(0, 0, 0, 0.85),
+        0 30px 80px rgba(0, 0, 0, 0.9),
         0 0 0 1px rgba(255, 255, 255, 0.02);
+      background: radial-gradient(circle at top, #1c2233 0, #05070b 55%);
+      isolation: isolate;
     }
 
-    .hero-card-inner {
-      padding: 1.4rem;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      gap: 1rem;
-    }
-
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.55);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-    }
-
-    .hero-photo {
+    .hero-video-overlay {
       position: relative;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: radial-gradient(circle at 50% 0, rgba(245, 183, 84, 0.3), transparent 60%);
-      aspect-ratio: 4 / 5;
-      display: flex;
-      align-items: stretch;
-      justify-content: stretch;
+      padding-top: 130%;
+      background-image: url("https://images.pexels.com/photos/6898859/pexels-photo-6898859.jpeg?auto=compress&cs=tinysrgb&w=1600");
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.1) contrast(1.05);
     }
 
-    .hero-photo::before {
+    .hero-video-overlay::after {
       content: "";
       position: absolute;
       inset: 0;
-      background-image: url("https://images.pexels.com/photos/167832/pexels-photo-167832.jpeg?auto=compress&cs=tinysrgb&w=1200");
-      background-size: cover;
-      background-position: center;
-      filter: saturate(1.05) contrast(1.05);
-      transform: scale(1.02);
-    }
-
-    .hero-photo-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(5, 6, 8, 0.9), transparent 40%);
+      background: radial-gradient(circle at center, transparent 0, rgba(0, 0, 0, 0.4) 55%, rgba(0, 0, 0, 0.9) 100%);
       mix-blend-mode: multiply;
     }
 
-    .hero-photo-footer {
+    .hero-tagline {
       position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 1rem 1.1rem 1.1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: #f5f5f5;
-      font-size: 0.8rem;
+      left: 1.6rem;
+      bottom: 1.6rem;
       z-index: 2;
+      color: #f5f5f5;
     }
 
-    .hero-photo-footer span {
-      opacity: 0.85;
-    }
-
-    .hero-photo-footer strong {
-      font-size: 0.9rem;
-    }
-
-    .hero-floating {
-      position: absolute;
-      right: -10px;
-      top: 18%;
-      padding: 0.7rem 0.9rem;
-      border-radius: 16px;
-      background: rgba(5, 6, 8, 0.96);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
-      font-size: 0.75rem;
-      color: var(--muted);
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      min-width: 150px;
-    }
-
-    .hero-floating strong {
-      color: var(--text);
-      font-size: 0.8rem;
-    }
-
-    .hero-floating small {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: rgba(245, 183, 84, 0.9);
-    }
-
-    .hero-floating-meter {
-      margin-top: 0.4rem;
-      width: 100%;
-      height: 4px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.06);
-      overflow: hidden;
-    }
-
-    .hero-floating-meter span {
+    .hero-tagline span {
       display: block;
-      width: 82%;
-      height: 100%;
-      background: linear-gradient(90deg, #f5b754, #ffdf9b);
-      box-shadow: 0 0 12px rgba(245, 183, 84, 0.9);
-    }
-
-    /* Sección portfolio */
-
-    .section-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .section-title {
-      font-size: 1.6rem;
-      letter-spacing: -0.03em;
-    }
-
-    .section-subtitle {
-      color: var(--muted);
-      font-size: 0.9rem;
-      max-width: 26rem;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
       font-size: 0.7rem;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
       color: var(--muted);
+      margin-bottom: 0.4rem;
     }
 
-    .grid {
-      display: grid;
-      gap: 1.4rem;
+    .hero-tagline h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
     }
 
-    .grid-portfolio {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .portfolio-card {
-      position: relative;
-      border-radius: 18px;
-      overflow: hidden;
-      background: #050608;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      cursor: pointer;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-    }
-
-    .portfolio-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
-      border-color: rgba(245, 183, 84, 0.6);
-    }
-
-    .portfolio-image {
-      position: relative;
-      aspect-ratio: 4 / 5;
-      overflow: hidden;
-    }
-
-    .portfolio-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.02);
-      transition: transform 0.25s ease;
-    }
-
-    .portfolio-card:hover .portfolio-image img {
-      transform: scale(1.06);
-    }
-
-    .portfolio-overlay {
+    .hero-badge {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(5, 6, 8, 0.9), transparent 40%);
-    }
-
-    .portfolio-info {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 1rem 1.1rem 1.1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .portfolio-info strong {
-      color: var(--text);
-      font-size: 0.95rem;
-    }
-
-    .portfolio-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.15rem 0.55rem;
+      top: 1.4rem;
+      right: 1.4rem;
+      z-index: 2;
+      padding: 0.5rem 0.9rem;
       border-radius: 999px;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(5, 7, 11, 0.8);
       border: 1px solid rgba(255, 255, 255, 0.12);
       font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      align-self: flex-start;
+      letter-spacing: 0.18em;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
 
-    /* Sobre mí */
+    .hero-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--danger);
+      box-shadow: 0 0 12px rgba(255, 75, 75, 0.9);
+    }
+
+    .hero-floating-card {
+      position: absolute;
+      left: -1.2rem;
+      bottom: 4.5rem;
+      z-index: 3;
+      padding: 0.9rem 1.1rem;
+      border-radius: 18px;
+      background: rgba(5, 7, 11, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+      font-size: 0.75rem;
+      max-width: 12rem;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
+    }
+
+    .hero-floating-card strong {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-floating-card span {
+      color: var(--muted);
+    }
+
+    .hero-glow {
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle at 20% 0, rgba(224, 181, 111, 0.18), transparent 55%);
+      opacity: 0.7;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    /* SECTION WRAPPER */
+
+    section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-kicker {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+    }
+
+    .section-subtitle {
+      max-width: 26rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    /* PORTFOLIO GRID */
+
+    .grid-portfolio {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.6rem;
+    }
+
+    .shot {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #11141d;
+      cursor: pointer;
+      isolation: isolate;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .shot::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      mix-blend-mode: screen;
+    }
+
+    .shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(1.05) contrast(1.05);
+      transform: scale(1.02);
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+
+    .shot-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent 55%);
+      opacity: 0.9;
+      transition: opacity 0.3s ease;
+    }
+
+    .shot-meta {
+      position: absolute;
+      left: 1.2rem;
+      right: 1.2rem;
+      bottom: 1.2rem;
+      z-index: 2;
+      color: #f5f5f5;
+    }
+
+    .shot-meta h3 {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .shot-meta span {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+
+    .shot-duration {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 2;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(5, 7, 11, 0.8);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .shot:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.9);
+    }
+
+    .shot:hover::before {
+      opacity: 1;
+    }
+
+    .shot:hover img {
+      transform: scale(1.06);
+      filter: saturate(1.15) contrast(1.1);
+    }
+
+    .shot:hover .shot-overlay {
+      opacity: 0.7;
+    }
+
+    /* ABOUT / DIRECTOR NOTE */
 
     .about {
       display: grid;
@@ -497,231 +531,139 @@
     }
 
     .about-text p {
-      color: var(--muted);
       font-size: 0.95rem;
-      margin-bottom: 1rem;
-      max-width: 32rem;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
     }
 
-    .about-stats {
+    .about-highlights {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.5rem;
+      gap: 1.8rem;
       margin-top: 0.5rem;
     }
 
-    .stat {
-      min-width: 120px;
+    .about-highlight {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
     }
 
-    .stat strong {
+    .about-highlight strong {
       display: block;
-      font-size: 1.4rem;
+      font-size: 1.1rem;
+      color: var(--accent);
+      letter-spacing: normal;
+      text-transform: none;
       margin-bottom: 0.1rem;
     }
 
-    .stat span {
-      font-size: 0.8rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-
     .about-card {
-      border-radius: 20px;
-      padding: 1.4rem;
-      background: radial-gradient(circle at 0 0, rgba(245, 183, 84, 0.18), transparent 55%), #050608;
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      position: relative;
+      border-radius: 22px;
+      padding: 1.6rem 1.7rem;
+      background: radial-gradient(circle at top left, rgba(224, 181, 111, 0.16), #05070b);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
-      display: grid;
-      gap: 1rem;
-    }
-
-    .about-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: var(--muted);
     }
 
-    .avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #f5b754, #ffdf9b);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #050608;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-
-    .about-card-body {
-      font-size: 0.9rem;
+    .about-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
       color: var(--text);
     }
 
-    .about-card-footer {
+    .about-card small {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .about-sign {
+      margin-top: 1.2rem;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 1rem;
+    }
+
+    .about-sign span {
       font-size: 0.8rem;
       color: var(--muted);
     }
 
-    .rating {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.25rem;
+    .about-sign strong {
+      color: var(--text);
     }
 
-    .rating span {
+    .about-sign-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
+    }
+
+    /* CONTACT / CTA FINAL */
+
+    .contact {
+      text-align: center;
+      padding-bottom: 5rem;
+    }
+
+    .contact h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .contact p {
+      max-width: 30rem;
+      margin: 0 auto 2rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .contact-meta {
+      margin-top: 1.8rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .contact-meta a {
       color: var(--accent);
     }
 
-    /* Contacto */
-
-    .contact {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 2.5rem;
-      align-items: flex-start;
-    }
-
-    .contact-text p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      max-width: 30rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .contact-list {
-      list-style: none;
-      display: grid;
-      gap: 0.6rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .contact-list strong {
-      color: var(--text);
-    }
-
-    .contact-form {
-      border-radius: 20px;
-      padding: 1.4rem 1.5rem;
-      background: #050608;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
-      display: grid;
-      gap: 1rem;
-    }
-
-    .form-row {
-      display: grid;
-      gap: 0.8rem;
-    }
-
-    .form-row-2 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    label {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.25rem;
-      display: block;
-    }
-
-    input,
-    textarea {
-      width: 100%;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(5, 6, 8, 0.9);
-      padding: 0.7rem 0.9rem;
-      color: var(--text);
-      font-family: inherit;
-      font-size: 0.9rem;
-      outline: none;
-      transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-    }
-
-    textarea {
-      border-radius: 14px;
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    input:focus,
-    textarea:focus {
-      border-color: rgba(245, 183, 84, 0.8);
-      box-shadow: 0 0 0 1px rgba(245, 183, 84, 0.4);
-      background: rgba(5, 6, 8, 1);
-    }
-
-    .form-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
+    /* FOOTER */
 
     footer {
       border-top: 1px solid rgba(255, 255, 255, 0.06);
       padding: 1.5rem;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--muted);
+      text-align: center;
+      background: #05070b;
     }
 
-    .footer-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 1.2rem;
-    }
-
-    .footer-links a {
-      color: var(--muted);
-    }
-
-    /* Responsive */
+    /* RESPONSIVE */
 
     @media (max-width: 960px) {
-      .hero,
-      .about,
-      .contact {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
       .hero {
-        padding-top: 3rem;
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 6rem;
       }
 
-      .hero-visual {
+      .hero-media {
         order: -1;
       }
 
-      .hero-floating {
-        right: 10px;
-      }
-
-      .grid-portfolio {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .about {
+        grid-template-columns: minmax(0, 1fr);
       }
 
       .section-header {
@@ -730,7 +672,7 @@
       }
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 768px) {
       .nav {
         padding-inline: 1rem;
       }
@@ -740,332 +682,265 @@
       }
 
       .hero {
-        gap: 2.2rem;
+        padding-inline: 1rem;
       }
 
-      .hero-title {
-        font-size: 2.1rem;
+      .grid-portfolio {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+    }
 
-      .hero-meta {
-        gap: 1rem;
-      }
-
+    @media (max-width: 540px) {
       .grid-portfolio {
         grid-template-columns: minmax(0, 1fr);
       }
 
-      .about-card,
-      .contact-form {
-        padding: 1.1rem 1.1rem;
-      }
-
-      .form-row-2 {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .form-footer {
-        flex-direction: column;
-        align-items: flex-start;
+      .hero-floating-card {
+        display: none;
       }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <nav class="nav">
-        <a href="#" class="logo">
-          <div class="logo-mark">M</div>
-          <span>Memoria Studio</span>
-        </a>
-        <div class="nav-links">
-          <a href="#portfolio">Portfolio</a>
-          <a href="#about">Sobre mí</a>
-          <a href="#contact">Contacto</a>
+  <!-- NAVBAR -->
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <div class="logo-mark">TN</div>
+        <span>Tu Nombre</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#portfolio">Portfolio</a>
+        <a href="#about">Sobre mí</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <button class="nav-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">
+        Reserva una sesión
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-text">
+        <div class="hero-kicker">Fotografía cinematográfica</div>
+        <h1 class="hero-title">
+          Historias contadas<br />
+          en <span>un solo fotograma</span>.
+        </h1>
+        <p class="hero-subtitle">
+          Portfolio profesional de fotografía con estética de cine. Luz, composición y narrativa visual pensadas
+          para campañas, retratos editoriales y proyectos personales con alma.
+        </p>
+
+        <div class="hero-meta">
+          <span>Barcelona · Disponible para viajar</span>
+          <span>Comercial · Retrato · Cine stills</span>
         </div>
-        <div class="nav-cta">
-          <button class="btn-outline btn" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">
+
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">
             Ver trabajos
           </button>
-          <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-            Reservar sesión
+          <button class="btn-ghost" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">
+            <span>▶</span> Reel / Behind the scenes
           </button>
         </div>
-      </nav>
-    </header>
 
-    <main>
-      <!-- HERO -->
-      <section class="section hero" id="inicio">
-        <div>
-          <div class="eyebrow">
-            <span class="eyebrow-dot"></span>
-            Fotografía editorial & lifestyle
+        <p class="hero-note">
+          <strong>Disponible para producciones 2026.</strong> Escríbeme para proyectos editoriales, campañas de marca
+          o rodajes donde necesites stills con lenguaje cinematográfico.
+        </p>
+      </div>
+
+      <div class="hero-media">
+        <div class="hero-glow"></div>
+        <div class="hero-frame">
+          <div class="hero-video-overlay"></div>
+          <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            Grabando luz
           </div>
-          <h1 class="hero-title">
-            Historias reales, <span>luz perfecta</span>.
-          </h1>
-          <p class="hero-subtitle">
-            Sesiones de fotografía profesional en Barcelona y alrededores. Retratos, moda, marca personal y campañas editoriales
-            con una estética cinematográfica, limpia y atemporal.
-          </p>
-          <div class="hero-actions">
-            <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-              Agenda tu sesión
-            </button>
-            <button class="btn-outline btn" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">
-              Ver portfolio completo
-            </button>
+          <div class="hero-tagline">
+            <span>Frames de cine</span>
+            <h3>La atmósfera primero, el resto después.</h3>
           </div>
-          <div class="hero-meta">
-            <div class="hero-meta-item">
-              <strong>10+ años</strong>
-              Experiencia profesional
-            </div>
-            <div class="hero-meta-item">
-              <strong>250+</strong>
-              Sesiones realizadas
-            </div>
-            <div class="hero-meta-item">
-              <strong>4.9/5</strong>
-              Valoración de clientes
-            </div>
+          <div class="hero-floating-card">
+            <strong>Selección 2024 · 2025</strong>
+            <span>
+              Una colección de escenas reales, rodadas en luz natural y mezcladas con toques de neón y tungsteno.
+            </span>
           </div>
-        </div>
-
-        <div class="hero-visual">
-          <div class="hero-card">
-            <div class="hero-card-inner">
-              <div class="hero-tag">
-                <span class="eyebrow-dot"></span>
-                Sesión editorial
-              </div>
-              <div class="hero-photo">
-                <div class="hero-photo-overlay"></div>
-                <div class="hero-photo-footer">
-                  <div>
-                    <span>Editorial · Barcelona</span>
-                    <strong>“Golden Hour Series”</strong>
-                  </div>
-                  <span>2025</span>
-                </div>
-              </div>
-              <div class="hero-card-footer">
-                <small style="color: var(--muted); text-transform: uppercase; letter-spacing: 0.16em;">
-                  Memoria Studio · Fotografía contemporánea
-                </small>
-              </div>
-            </div>
-          </div>
-
-          <div class="hero-floating">
-            <small>Disponibilidad</small>
-            <strong>Reservas abiertas · Primavera 2026</strong>
-            <p>Sesiones limitadas para proyectos personales, marcas y editoriales.</p>
-            <div class="hero-floating-meter">
-              <span></span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PORTFOLIO -->
-      <section class="section" id="portfolio">
-        <div class="section-header">
-          <div>
-            <div class="pill">
-              <span class="eyebrow-dot"></span>
-              Portfolio seleccionado
-            </div>
-            <h2 class="section-title">Colecciones destacadas</h2>
-          </div>
-          <p class="section-subtitle">
-            Una selección de proyectos recientes: retrato editorial, moda, lifestyle y campañas de marca. Cada sesión está
-            diseñada para transmitir la esencia real de la persona o la marca.
-          </p>
-        </div>
-
-        <div class="grid grid-portfolio">
-          <article class="portfolio-card">
-            <div class="portfolio-image">
-              <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Retrato editorial" />
-              <div class="portfolio-overlay"></div>
-              <div class="portfolio-info">
-                <div class="portfolio-tag">
-                  Editorial
-                </div>
-                <strong>Retrato editorial urbano</strong>
-                <span>Sesión en localización · Barcelona</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="portfolio-card">
-            <div class="portfolio-image">
-              <img src="https://images.pexels.com/photos/167404/pexels-photo-167404.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Moda y campaña" />
-              <div class="portfolio-overlay"></div>
-              <div class="portfolio-info">
-                <div class="portfolio-tag">
-                  Moda
-                </div>
-                <strong>Campaña cápsula FW</strong>
-                <span>Dirección de arte, estilismo y fotografía</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="portfolio-card">
-            <div class="portfolio-image">
-              <img src="https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Marca personal" />
-              <div class="portfolio-overlay"></div>
-              <div class="portfolio-info">
-                <div class="portfolio-tag">
-                  Marca personal
-                </div>
-                <strong>Branding para creativos</strong>
-                <span>Contenido visual para redes y web</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- SOBRE MÍ -->
-      <section class="section" id="about">
-        <div class="about">
-          <div class="about-text">
-            <div class="pill">
-              <span class="eyebrow-dot"></span>
-              Sobre Memoria Studio
-            </div>
-            <h2 class="section-title" style="margin-top: 0.6rem; margin-bottom: 0.8rem;">
-              Fotografía con intención, más allá de la pose.
-            </h2>
-            <p>
-              Trabajo con luz natural y esquemas de iluminación minimalistas para crear imágenes limpias, honestas y
-              sofisticadas. Cada sesión se construye desde la conversación: qué quieres contar, cómo quieres verte y qué
-              necesitas transmitir.
-            </p>
-            <p>
-              Acompaño todo el proceso: desde la idea y el moodboard hasta la selección final y la entrega optimizada para
-              web, redes y print.
-            </p>
-
-            <div class="about-stats">
-              <div class="stat">
-                <strong>+80</strong>
-                <span>Marcas fotografiadas</span>
-              </div>
-              <div class="stat">
-                <strong>3</strong>
-                <span>Ciudades base</span>
-              </div>
-              <div class="stat">
-                <strong>24–72h</strong>
-                <span>Entrega preview</span>
-              </div>
-            </div>
-          </div>
-
-          <aside class="about-card">
-            <div class="about-card-header">
-              <div style="display:flex; align-items:center; gap:0.7rem;">
-                <div class="avatar">M</div>
-                <div>
-                  <strong style="font-size:0.9rem;">Memoria</strong>
-                  <div style="font-size:0.75rem; color:var(--muted);">Fotógrafa & directora de arte</div>
-                </div>
-              </div>
-              <div class="rating">
-                <span>★</span> 4.9 · 120 reseñas
-              </div>
-            </div>
-            <div class="about-card-body">
-              “Me interesa capturar la parte más honesta de cada persona. No busco la foto perfecta, sino la imagen que
-              realmente se siente tuya.”
-            </div>
-            <div class="about-card-footer">
-              <span>Disponible para proyectos en Barcelona, Madrid y Europa.</span>
-              <button class="btn-outline btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-                Hablemos de tu proyecto
-              </button>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <!-- CONTACTO -->
-      <section class="section" id="contact">
-        <div class="contact">
-          <div class="contact-text">
-            <div class="pill">
-              <span class="eyebrow-dot"></span>
-              Contacto & reservas
-            </div>
-            <h2 class="section-title" style="margin-top:0.6rem; margin-bottom:0.8rem;">
-              Cuéntame qué quieres fotografiar.
-            </h2>
-            <p>
-              Rellena el formulario y te responderé en menos de 24 horas con opciones de fecha, propuesta de sesión y
-              presupuesto detallado.
-            </p>
-            <ul class="contact-list">
-              <li><strong>Email:</strong> hola@memoriastudio.com</li>
-              <li><strong>Ubicación:</strong> Barcelona, sesiones en estudio y exterior</li>
-              <li><strong>Idiomas:</strong> Español · Català · English</li>
-            </ul>
-          </div>
-
-          <form class="contact-form" onsubmit="event.preventDefault(); alert('Gracias por tu mensaje. Te responderé muy pronto.');">
-            <div class="form-row form-row-2">
-              <div>
-                <label for="name">Nombre completo</label>
-                <input id="name" type="text" placeholder="Tu nombre" required />
-              </div>
-              <div>
-                <label for="email">Email</label>
-                <input id="email" type="email" placeholder="tu@email.com" required />
-              </div>
-            </div>
-
-            <div class="form-row form-row-2">
-              <div>
-                <label for="type">Tipo de sesión</label>
-                <input id="type" type="text" placeholder="Retrato, marca personal, editorial..." />
-              </div>
-              <div>
-                <label for="date">Fecha aproximada</label>
-                <input id="date" type="text" placeholder="Mes / rango de fechas" />
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div>
-                <label for="message">Cuéntame un poco más</label>
-                <textarea id="message" placeholder="Qué necesitas, dónde te gustaría hacer la sesión, referencias..."></textarea>
-              </div>
-            </div>
-
-            <div class="form-footer">
-              <span>Tu mensaje se enviará de forma segura. No comparto tus datos con terceros.</span>
-              <button class="btn" type="submit">Enviar mensaje</button>
-            </div>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="footer-inner">
-        <span>© 2026 Memoria Studio · Fotografía profesional</span>
-        <div class="footer-links">
-          <a href="#portfolio">Portfolio</a>
-          <a href="#about">Sobre mí</a>
-          <a href="#contact">Contacto</a>
         </div>
       </div>
-    </footer>
-  </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Portfolio</div>
+          <h2 class="section-title">Secuencias que parecen fotogramas de película.</h2>
+        </div>
+        <p class="section-subtitle">
+          Una selección de proyectos personales y comerciales. Cada serie está pensada como una escena:
+          color, textura y atmósfera trabajan juntos para contar algo sin necesidad de diálogo.
+        </p>
+      </div>
+
+      <div class="grid-portfolio">
+        <!-- Cambia las imágenes por las tuyas -->
+        <article class="shot">
+          <img src="https://images.pexels.com/photos/6898852/pexels-photo-6898852.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Retrato nocturno urbano" />
+          <div class="shot-overlay"></div>
+          <div class="shot-duration">Serie · Nocturna</div>
+          <div class="shot-meta">
+            <h3>Neón en la ciudad</h3>
+            <span>Retrato · Luz mixta · Color grading frío</span>
+          </div>
+        </article>
+
+        <article class="shot">
+          <img src="https://images.pexels.com/photos/6898853/pexels-photo-6898853.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Retrato interior cinematográfico" />
+          <div class="shot-overlay"></div>
+          <div class="shot-duration">Campaña</div>
+          <div class="shot-meta">
+            <h3>Interior 35mm</h3>
+            <span>Moda · Luz de ventana · Tonos cálidos</span>
+          </div>
+        </article>
+
+        <article class="shot">
+          <img src="https://images.pexels.com/photos/6898850/pexels-photo-6898850.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Escena de pareja cinematográfica" />
+          <div class="shot-overlay"></div>
+          <div class="shot-duration">Editorial</div>
+          <div class="shot-meta">
+            <h3>Antes del último tren</h3>
+            <span>Narrativa · Pareja · Azul y ámbar</span>
+          </div>
+        </article>
+
+        <article class="shot">
+          <img src="https://images.pexels.com/photos/6898856/pexels-photo-6898856.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Retrato en coche" />
+          <div class="shot-overlay"></div>
+          <div class="shot-duration">Serie</div>
+          <div class="shot-meta">
+            <h3>Car lights</h3>
+            <span>Reflejos · Bokeh · Carácter analógico</span>
+          </div>
+        </article>
+
+        <article class="shot">
+          <img src="https://images.pexels.com/photos/6898858/pexels-photo-6898858.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Retrato con humo" />
+          <div class="shot-overlay"></div>
+          <div class="shot-duration">Personal</div>
+          <div class="shot-meta">
+            <h3>Humo y tungsteno</h3>
+            <span>Contraluz · Atmósfera · Drama</span>
+          </div>
+        </article>
+
+        <article class="shot">
+          <img src="https://images.pexels.com/photos/6898855/pexels-photo-6898855.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Retrato en pasillo" />
+          <div class="shot-overlay"></div>
+          <div class="shot-duration">Still de rodaje</div>
+          <div class="shot-meta">
+            <h3>Pasillo 2:1</h3>
+            <span>Formato cine · Profundidad · Siluetas</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Sobre mí</div>
+          <h2 class="section-title">Dirección de luz y fotografía con mirada de cine.</h2>
+        </div>
+      </div>
+
+      <div class="about">
+        <div class="about-text">
+          <p>
+            Trabajo la fotografía como si cada sesión fuera una escena: empezando por la atmósfera, la luz
+            y el ritmo, y después todo lo demás. Me inspiran el cine independiente, las películas de los 70
+            y la mezcla entre luz natural y artificial.
+          </p>
+          <p>
+            Colaboro con marcas, productoras y artistas que buscan imágenes con intención, no solo “fotos bonitas”.
+            Desde campañas pequeñas hasta rodajes más grandes, el objetivo es el mismo: construir un universo visual
+            coherente y honesto.
+          </p>
+
+          <div class="about-highlights">
+            <div class="about-highlight">
+              <strong>10+</strong>
+              Años fotografiando proyectos personales y comerciales.
+            </div>
+            <div class="about-highlight">
+              <strong>3</strong>
+              Ciudades base: Barcelona, Madrid, proyectos internacionales.
+            </div>
+            <div class="about-highlight">
+              <strong>∞</strong>
+              Ganas de seguir explorando nuevas historias.
+            </div>
+          </div>
+        </div>
+
+        <aside class="about-card">
+          <h3>Nota de dirección</h3>
+          <small>Cómo trabajo</small>
+          <p>
+            Antes de disparar, definimos juntos el tono de la historia: referencias de cine, paleta de color,
+            tipo de luz y ritmo de la sesión. A partir de ahí, construimos un plan flexible que deja espacio
+            para lo inesperado.
+          </p>
+          <div class="about-sign">
+            <span>Disponible para <strong>campañas, retratos y stills de rodaje</strong>.</span>
+            <div class="about-sign-line"></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="contact">
+      <div class="section-kicker">Contacto</div>
+      <h2>Cuéntame la historia que quieres rodar en fotos.</h2>
+      <p>
+        Escríbeme con una breve descripción del proyecto, fechas aproximadas, localización y referencias visuales
+        (películas, fotógrafos, campañas…). Te responderé con una propuesta de enfoque y disponibilidad.
+      </p>
+
+      <div class="hero-actions" style="justify-content:center; margin-top:1.5rem;">
+        <a class="btn-primary" href="mailto:tuemail@tudominio.com?subject=Proyecto%20de%20fotograf%C3%ADa%20cinematogr%C3%A1fica">
+          Escribir por email
+        </a>
+        <a class="btn-ghost" href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+          <span>◎</span> Ver más en Instagram
+        </a>
+      </div>
+
+      <div class="contact-meta">
+        También disponible por mensaje directo en redes o videollamada previa a la sesión.<br />
+        Presupuestos adaptados a producciones pequeñas, medianas y editoriales.
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Tu Nombre – Fotografía cinematográfica. Todos los derechos reservados.
+  </footer>
+
+  <script>
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
+
