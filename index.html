@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cinematic Portfolio – Director of Photography</title>
+<title>Film 35mm – Portfolio Analógico</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 /* ---------------------- */
-/* VARIABLES DE ESTILO   */
+/* VARIABLES DE COLOR     */
 /* ---------------------- */
 :root {
-  --bg: #050505;
-  --text: #eaeaea;
-  --accent: #d49f50;
-  --accent-soft: rgba(212,159,80,0.2);
-  --muted: #8b8b8b;
+  --bg: #f4efe7;
+  --text: #2b2b2b;
+  --muted: #6f6f6f;
+  --portra-warm: #e8c9a1;
+  --portra-soft: rgba(232,201,161,0.35);
 }
 
 /* ---------------------- */
@@ -33,6 +33,7 @@ body {
   color: var(--text);
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
+  line-height: 1.6;
 }
 
 /* ---------------------- */
@@ -43,9 +44,9 @@ body::after {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
-  opacity: 0.12;
-  mix-blend-mode: overlay;
+  background-image: url("https://www.transparenttextures.com/patterns/noise.png");
+  opacity: 0.18;
+  mix-blend-mode: multiply;
   z-index: 9999;
 }
 
@@ -60,16 +61,16 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(0,0,0,0.4);
+  background: rgba(255,255,255,0.6);
   backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
   z-index: 1000;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .logo {
-  font-family: 'Cinzel', serif;
-  font-size: 1.1rem;
-  letter-spacing: 0.2em;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
 }
 
 .nav-links {
@@ -81,16 +82,16 @@ header {
   color: var(--muted);
   text-transform: uppercase;
   font-size: 0.75rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   transition: 0.3s;
 }
 
 .nav-links a:hover {
-  color: var(--accent);
+  color: var(--text);
 }
 
 /* ---------------------- */
-/* HERO CINEMATOGRÁFICO   */
+/* HERO ANALÓGICO         */
 /* ---------------------- */
 .hero {
   height: 100vh;
@@ -100,52 +101,50 @@ header {
   align-items: flex-end;
   padding: 4rem;
   padding-bottom: 8rem;
-  background-image: url("https://images.pexels.com/photos/6898859/pexels-photo-6898859.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  background-image: url("https://images.pexels.com/photos/6898853/pexels-photo-6898853.jpeg?auto=compress&cs=tinysrgb&w=1600");
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  filter: saturate(1.1) contrast(1.05);
+  filter: saturate(1.05) contrast(0.95);
 }
 
-/* Capa de color cinematográfico */
+/* Viñeteado suave */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
+  background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.35) 100%);
 }
 
-/* Formato anamórfico */
+/* Halación cálida */
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-top: 80px solid rgba(0,0,0,0.9);
-  border-bottom: 80px solid rgba(0,0,0,0.9);
-  pointer-events: none;
+  background: radial-gradient(circle at 60% 30%, rgba(255,200,150,0.25), transparent 60%);
+  mix-blend-mode: screen;
 }
 
-/* Texto del hero */
 .hero-content {
   position: relative;
-  max-width: 700px;
+  max-width: 650px;
   z-index: 10;
 }
 
 .hero-title {
-  font-family: 'Cinzel', serif;
-  font-size: 3.4rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
   line-height: 1.1;
   margin-bottom: 1rem;
-  text-shadow: 0 0 20px rgba(0,0,0,0.8);
+  color: #2b2b2b;
+  text-shadow: 0 0 20px rgba(255,255,255,0.4);
 }
 
 .hero-title span {
-  color: var(--accent);
+  color: #c28f5b;
 }
 
 .hero-sub {
-  color: var(--muted);
+  color: #4a4a4a;
   font-size: 1rem;
   max-width: 500px;
   margin-bottom: 2rem;
@@ -156,33 +155,33 @@ header {
   padding: 0.9rem 2rem;
   border-radius: 50px;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   font-size: 0.75rem;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .btn-primary {
-  background: var(--accent);
-  color: #000;
+  background: var(--portra-warm);
+  color: #3b2a1a;
 }
 
 .btn-primary:hover {
-  background: #f5d7a0;
+  background: #f3d9b8;
 }
 
 .btn-outline {
-  border: 1px solid var(--accent);
-  color: var(--accent);
+  border: 1px solid var(--portra-warm);
+  color: #3b2a1a;
   margin-left: 1rem;
 }
 
 .btn-outline:hover {
-  background: var(--accent-soft);
+  background: var(--portra-soft);
 }
 
 /* ---------------------- */
-/* PORTFOLIO GRID         */
+/* PORTFOLIO 35MM         */
 /* ---------------------- */
 section {
   padding: 6rem 2rem;
@@ -191,9 +190,10 @@ section {
 }
 
 .section-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 2rem;
   margin-bottom: 2rem;
+  color: #3b2a1a;
 }
 
 .grid {
@@ -205,8 +205,10 @@ section {
 .card {
   position: relative;
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: 12px;
   cursor: pointer;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 .card img {
@@ -214,28 +216,22 @@ section {
   height: 100%;
   object-fit: cover;
   transition: 0.4s;
-  filter: brightness(0.8) contrast(1.1);
+  filter: saturate(1.1) contrast(0.95);
 }
 
 .card:hover img {
-  transform: scale(1.08);
-  filter: brightness(1) contrast(1.2);
-}
-
-.card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-  opacity: 0.7;
+  transform: scale(1.05);
+  filter: saturate(1.2) contrast(1.05);
 }
 
 .card-title {
   position: absolute;
   bottom: 1rem;
   left: 1rem;
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 1.1rem;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0,0,0,0.6);
 }
 
 /* ---------------------- */
@@ -246,7 +242,7 @@ footer {
   padding: 2rem;
   color: var(--muted);
   font-size: 0.8rem;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(0,0,0,0.08);
 }
 </style>
 </head>
@@ -264,33 +260,33 @@ footer {
 
 <section class="hero">
   <div class="hero-content">
-    <h1 class="hero-title">Fotografía <span>Cinematográfica</span></h1>
-    <p class="hero-sub">Narrativa visual, atmósferas densas y luz que cuenta historias. Un enfoque inspirado en el cine de autor.</p>
+    <h1 class="hero-title">Fotografía <span>Film 35mm</span></h1>
+    <p class="hero-sub">Tonos cálidos, pieles suaves y la estética orgánica del Kodak Portra. Un enfoque analógico para historias reales.</p>
     <a class="btn btn-primary" href="#portfolio">Ver Portfolio</a>
     <a class="btn btn-outline" href="#contacto">Contacto</a>
   </div>
 </section>
 
 <section id="portfolio">
-  <h2 class="section-title">Secuencias</h2>
+  <h2 class="section-title">Rollos recientes</h2>
   <div class="grid">
     <div class="card">
       <img src="https://images.pexels.com/photos/6898852/pexels-photo-6898852.jpeg?auto=compress&cs=tinysrgb&w=1600">
-      <div class="card-title">Neon Dreams</div>
+      <div class="card-title">Portra Skin Tones</div>
     </div>
     <div class="card">
       <img src="https://images.pexels.com/photos/6898853/pexels-photo-6898853.jpeg?auto=compress&cs=tinysrgb&w=1600">
-      <div class="card-title">Analog Heat</div>
+      <div class="card-title">Soft Window Light</div>
     </div>
     <div class="card">
       <img src="https://images.pexels.com/photos/6898850/pexels-photo-6898850.jpeg?auto=compress&cs=tinysrgb&w=1600">
-      <div class="card-title">Last Train</div>
+      <div class="card-title">Warm Evening</div>
     </div>
   </div>
 </section>
 
 <footer>
-  © 2026 – Fotografía Cinematográfica · Tu Nombre
+  © 2026 – Fotografía Film 35mm · Tu Nombre
 </footer>
 
 </body>
