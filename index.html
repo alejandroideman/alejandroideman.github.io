@@ -22,53 +22,21 @@
         }
 
         @media (prefers-color-scheme: light) {
-            body {
-                background: #f5f5f7;
-                color: #111;
-            }
-            .header-blur {
-                background: rgba(245,245,247,0.72);
-            }
-            .contact input,
-            .contact textarea {
-                background: #ffffff;
-                color: #111;
-            }
-            .contact button {
-                background: #111;
-                color: #f5f5f7;
-            }
-            .contact button:hover {
-                background: #333;
-            }
-            .lightbox-caption {
-                color: #111;
-            }
+            body { background: #f5f5f7; color: #111; }
+            .header-blur { background: rgba(245,245,247,0.72); }
+            .contact input, .contact textarea { background: #fff; color: #111; }
+            .contact button { background: #111; color: #f5f5f7; }
+            .contact button:hover { background: #333; }
+            .lightbox-caption { color: #111; }
         }
 
         @media (prefers-color-scheme: dark) {
-            body {
-                background: #000;
-                color: #f5f5f7;
-            }
-            .header-blur {
-                background: rgba(15,15,20,0.72);
-            }
-            .contact input,
-            .contact textarea {
-                background: #111;
-                color: #f5f5f7;
-            }
-            .contact button {
-                background: #f5f5f7;
-                color: #000;
-            }
-            .contact button:hover {
-                background: #dcdcdc;
-            }
-            .lightbox-caption {
-                color: #f5f5f7;
-            }
+            body { background: #000; color: #f5f5f7; }
+            .header-blur { background: rgba(15,15,20,0.72); }
+            .contact input, .contact textarea { background: #111; color: #f5f5f7; }
+            .contact button { background: #f5f5f7; color: #000; }
+            .contact button:hover { background: #dcdcdc; }
+            .lightbox-caption { color: #f5f5f7; }
         }
 
         /* HEADER + BLUR macOS */
@@ -88,16 +56,9 @@
             align-items: center;
         }
 
-        .logo {
-            font-weight: 500;
-            font-size: 1.1rem;
-        }
+        .logo { font-weight: 500; font-size: 1.1rem; }
 
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
+        nav { display: flex; align-items: center; gap: 24px; }
 
         nav a {
             text-decoration: none;
@@ -107,9 +68,7 @@
             font-size: 0.95rem;
         }
 
-        nav a:hover {
-            opacity: 1;
-        }
+        nav a:hover { opacity: 1; }
 
         /* HAMBURGUESA */
         .burger {
@@ -129,33 +88,17 @@
             transition: transform 0.25s ease, opacity 0.25s ease;
         }
 
-        .burger.open span:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-        .burger.open span:nth-child(2) {
-            opacity: 0;
-        }
-        .burger.open span:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
+        .burger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .burger.open span:nth-child(2) { opacity: 0; }
+        .burger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-        .nav-links {
-            display: flex;
-        }
+        .nav-links { display: flex; }
+        .nav-links.mobile { display: none; flex-direction: column; padding: 10px 0 8px; }
+        .nav-links.mobile a { padding: 6px 0; }
 
-        .nav-links.mobile {
-            display: none;
-            flex-direction: column;
-            padding: 10px 0 8px;
-        }
-
-        .nav-links.mobile a {
-            padding: 6px 0;
-        }
-
-        /* HERO */
+        /* SECCIONES CON MÁS ESPACIO */
         .hero {
-            padding: 100px 50px 80px;
+            padding: 160px 50px 140px;
             max-width: 900px;
         }
 
@@ -172,12 +115,11 @@
             line-height: 1.6;
         }
 
-        /* GALERÍA */
         .gallery {
-            padding: 20px 50px 100px;
+            padding: 120px 50px 160px;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 22px;
+            gap: 28px;
         }
 
         .gallery img {
@@ -194,9 +136,8 @@
             opacity: 1;
         }
 
-        /* SOBRE MÍ */
         .about {
-            padding: 100px 50px;
+            padding: 160px 50px;
             max-width: 900px;
         }
 
@@ -212,9 +153,8 @@
             max-width: 600px;
         }
 
-        /* CONTACTO */
         .contact {
-            padding: 100px 50px;
+            padding: 160px 50px;
             max-width: 900px;
         }
 
@@ -239,9 +179,7 @@
             font-family: inherit;
         }
 
-        .contact textarea {
-            min-height: 130px;
-        }
+        .contact textarea { min-height: 130px; }
 
         .contact button {
             padding: 14px;
@@ -252,15 +190,14 @@
             transition: background 0.25s ease;
         }
 
-        /* FOOTER */
         footer {
-            padding: 50px;
+            padding: 80px 50px;
             text-align: center;
             font-size: 0.9rem;
             opacity: 0.45;
         }
 
-        /* FADE-IN AL HACER SCROLL */
+        /* FADE-IN */
         .fade-in {
             opacity: 0;
             transform: translateY(18px);
@@ -283,9 +220,7 @@
             z-index: 200;
         }
 
-        .lightbox.open {
-            display: flex;
-        }
+        .lightbox.open { display: flex; }
 
         .lightbox-content {
             max-width: 90vw;
@@ -318,25 +253,12 @@
 
         /* RESPONSIVE */
         @media (max-width: 800px) {
-            .header-blur {
-                padding: 14px 20px;
-            }
-            .hero, .gallery, .about, .contact {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-            .hero h1 {
-                font-size: 2.4rem;
-            }
-            .nav-links.desktop {
-                display: none;
-            }
-            .burger {
-                display: flex;
-            }
-            .nav-links.mobile.open {
-                display: flex;
-            }
+            .header-blur { padding: 14px 20px; }
+            .hero, .gallery, .about, .contact { padding-left: 20px; padding-right: 20px; }
+            .hero h1 { font-size: 2.4rem; }
+            .nav-links.desktop { display: none; }
+            .burger { display: flex; }
+            .nav-links.mobile.open { display: flex; }
         }
     </style>
 </head>
@@ -356,9 +278,7 @@
             </div>
 
             <div class="burger" id="burger">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
         </nav>
     </div>
