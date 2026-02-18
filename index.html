@@ -6,24 +6,86 @@
     <title>rawcasamitjana – Galería Minimalista</title>
 
     <style>
-        /* TIPOGRAFÍA ESTILO APPLE */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+        :root {
+            color-scheme: light dark;
+        }
 
         body {
             margin: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
             background: #000;
             color: #f5f5f7;
             letter-spacing: -0.01em;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
-        /* HEADER */
+        @media (prefers-color-scheme: light) {
+            body {
+                background: #f5f5f7;
+                color: #111;
+            }
+            .header-blur {
+                background: rgba(245,245,247,0.72);
+            }
+            .contact input,
+            .contact textarea {
+                background: #ffffff;
+                color: #111;
+            }
+            .contact button {
+                background: #111;
+                color: #f5f5f7;
+            }
+            .contact button:hover {
+                background: #333;
+            }
+            .lightbox-caption {
+                color: #111;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #000;
+                color: #f5f5f7;
+            }
+            .header-blur {
+                background: rgba(15,15,20,0.72);
+            }
+            .contact input,
+            .contact textarea {
+                background: #111;
+                color: #f5f5f7;
+            }
+            .contact button {
+                background: #f5f5f7;
+                color: #000;
+            }
+            .contact button:hover {
+                background: #dcdcdc;
+            }
+            .lightbox-caption {
+                color: #f5f5f7;
+            }
+        }
+
+        /* HEADER + BLUR macOS */
         header {
-            padding: 28px 50px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-blur {
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            padding: 18px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 1rem;
         }
 
         .logo {
@@ -31,21 +93,69 @@
             font-size: 1.1rem;
         }
 
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
         nav a {
-            margin-left: 28px;
             text-decoration: none;
-            color: #f5f5f7;
+            color: inherit;
             opacity: 0.6;
             transition: opacity 0.25s ease;
+            font-size: 0.95rem;
         }
 
         nav a:hover {
             opacity: 1;
         }
 
+        /* HAMBURGUESA */
+        .burger {
+            display: none;
+            width: 24px;
+            height: 18px;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .burger span {
+            height: 2px;
+            width: 100%;
+            background: currentColor;
+            border-radius: 999px;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        .burger.open span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .burger.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .burger.open span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links.mobile {
+            display: none;
+            flex-direction: column;
+            padding: 10px 0 8px;
+        }
+
+        .nav-links.mobile a {
+            padding: 6px 0;
+        }
+
         /* HERO */
         .hero {
-            padding: 140px 50px 100px;
+            padding: 100px 50px 80px;
             max-width: 900px;
         }
 
@@ -76,6 +186,7 @@
             object-fit: cover;
             transition: transform 0.35s ease, opacity 0.35s ease;
             opacity: 0.9;
+            cursor: zoom-in;
         }
 
         .gallery img:hover {
@@ -85,7 +196,7 @@
 
         /* SOBRE MÍ */
         .about {
-            padding: 120px 50px;
+            padding: 100px 50px;
             max-width: 900px;
         }
 
@@ -103,7 +214,7 @@
 
         /* CONTACTO */
         .contact {
-            padding: 120px 50px;
+            padding: 100px 50px;
             max-width: 900px;
         }
 
@@ -125,8 +236,6 @@
             padding: 14px;
             border: none;
             border-radius: 8px;
-            background: #111;
-            color: #f5f5f7;
             font-family: inherit;
         }
 
@@ -136,17 +245,11 @@
 
         .contact button {
             padding: 14px;
-            background: #f5f5f7;
-            color: #000;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             font-weight: 500;
             transition: background 0.25s ease;
-        }
-
-        .contact button:hover {
-            background: #dcdcdc;
         }
 
         /* FOOTER */
@@ -157,10 +260,66 @@
             opacity: 0.45;
         }
 
+        /* FADE-IN AL HACER SCROLL */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* LIGHTBOX */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+        }
+
+        .lightbox.open {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 80vh;
+            position: relative;
+        }
+
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .lightbox-caption {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -32px;
+            right: 0;
+            cursor: pointer;
+            font-size: 1.4rem;
+            opacity: 0.8;
+        }
+
         /* RESPONSIVE */
         @media (max-width: 800px) {
-            header {
-                padding: 20px;
+            .header-blur {
+                padding: 14px 20px;
             }
             .hero, .gallery, .about, .contact {
                 padding-left: 20px;
@@ -169,6 +328,15 @@
             .hero h1 {
                 font-size: 2.4rem;
             }
+            .nav-links.desktop {
+                display: none;
+            }
+            .burger {
+                display: flex;
+            }
+            .nav-links.mobile.open {
+                display: flex;
+            }
         }
     </style>
 </head>
@@ -176,23 +344,39 @@
 <body>
 
 <header>
-    <div class="logo">rawcasamitjana</div>
-    <nav>
+    <div class="header-blur">
+        <div class="logo">rawcasamitjana</div>
+
+        <nav>
+            <div class="nav-links desktop">
+                <a href="#inicio">Inicio</a>
+                <a href="#galeria">Galería</a>
+                <a href="#sobre">Sobre mí</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+
+            <div class="burger" id="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </div>
+
+    <div class="nav-links mobile" id="mobileNav">
         <a href="#inicio">Inicio</a>
         <a href="#galeria">Galería</a>
         <a href="#sobre">Sobre mí</a>
         <a href="#contacto">Contacto</a>
-    </nav>
+    </div>
 </header>
 
-<section class="hero" id="inicio">
+<section class="hero fade-in" id="inicio">
     <h1>Fotografía minimalista</h1>
     <p>Una colección visual centrada en coches, líneas puras y estética silenciosa. Inspiración en su forma más simple.</p>
 </section>
 
-<section class="gallery" id="galeria">
-
-    <!-- FOTOS DE COCHES (Unsplash, libres de derechos) -->
+<section class="gallery fade-in" id="galeria">
     <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200" alt="Coche deportivo">
     <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=1200" alt="Coche clásico">
     <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=1200" alt="Superdeportivo rojo">
@@ -201,10 +385,9 @@
     <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=1200" alt="Interior de coche">
     <img src="https://images.unsplash.com/photo-1502872364588-894d7d6ddfab?w=1200" alt="Coche deportivo azul">
     <img src="https://images.unsplash.com/photo-1518552781628-0f49c2a9b6e0?w=1200" alt="Coche retro">
-
 </section>
 
-<section class="about" id="sobre">
+<section class="about fade-in" id="sobre">
     <h2>Sobre mí</h2>
     <p>
         Soy rawcasamitjana, fotógrafo minimalista inspirado por la estética limpia y la elegancia del diseño automotriz.
@@ -212,7 +395,7 @@
     </p>
 </section>
 
-<section class="contact" id="contacto">
+<section class="contact fade-in" id="contacto">
     <h2>Contacto</h2>
     <form>
         <input type="text" placeholder="Nombre">
@@ -222,12 +405,81 @@
     </form>
 </section>
 
-<footer>
+<footer class="fade-in">
     © 2026 rawcasamitjana – Todos los derechos reservados
 </footer>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+        <span class="lightbox-close" id="lightboxClose">✕</span>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="">
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+</div>
+
+<script>
+    // Fade-in al hacer scroll
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    fadeElements.forEach(el => observer.observe(el));
+
+    // Menú hamburguesa
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+
+    burger.addEventListener('click', () => {
+        burger.classList.toggle('open');
+        mobileNav.classList.toggle('open');
+    });
+
+    mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            burger.classList.remove('open');
+            mobileNav.classList.remove('open');
+        });
+    });
+
+    // Lightbox tipo Apple Photos
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    document.querySelectorAll('.gallery img').forEach(img => {
+        img.addEventListener('click', () => {
+            lightboxImg.src = img.src;
+            lightboxCaption.textContent = img.alt || '';
+            lightbox.classList.add('open');
+        });
+    });
+
+    lightboxClose.addEventListener('click', () => {
+        lightbox.classList.remove('open');
+    });
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            lightbox.classList.remove('open');
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            lightbox.classList.remove('open');
+        }
+    });
+</script>
+
 </body>
 </html>
-
 
 
