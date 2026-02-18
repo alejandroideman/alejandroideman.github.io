@@ -8,9 +8,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
-        :root {
-            color-scheme: light dark;
-        }
+        :root { color-scheme: light dark; }
 
         body {
             margin: 0;
@@ -21,6 +19,7 @@
             transition: background 0.3s ease, color 0.3s ease;
         }
 
+        /* MODO CLARO */
         @media (prefers-color-scheme: light) {
             body { background: #f5f5f7; color: #111; }
             .header-blur { background: rgba(245,245,247,0.72); }
@@ -30,6 +29,7 @@
             .lightbox-caption { color: #111; }
         }
 
+        /* MODO OSCURO */
         @media (prefers-color-scheme: dark) {
             body { background: #000; color: #f5f5f7; }
             .header-blur { background: rgba(15,15,20,0.72); }
@@ -37,6 +37,16 @@
             .contact button { background: #f5f5f7; color: #000; }
             .contact button:hover { background: #dcdcdc; }
             .lightbox-caption { color: #f5f5f7; }
+        }
+
+        /* ESPACIADO ENTRE SECCIONES */
+        section {
+            margin-top: 180px;
+            margin-bottom: 180px;
+        }
+
+        .hero {
+            margin-top: 80px !important;
         }
 
         /* HEADER + BLUR macOS */
@@ -96,9 +106,9 @@
         .nav-links.mobile { display: none; flex-direction: column; padding: 10px 0 8px; }
         .nav-links.mobile a { padding: 6px 0; }
 
-        /* SECCIONES CON MÁS ESPACIO */
+        /* HERO */
         .hero {
-            padding: 160px 50px 140px;
+            padding: 0 50px;
             max-width: 900px;
         }
 
@@ -115,11 +125,12 @@
             line-height: 1.6;
         }
 
+        /* GALERÍA */
         .gallery {
-            padding: 120px 50px 160px;
+            padding: 0 50px;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 28px;
+            gap: 32px;
         }
 
         .gallery img {
@@ -136,8 +147,9 @@
             opacity: 1;
         }
 
+        /* SOBRE MÍ */
         .about {
-            padding: 160px 50px;
+            padding: 0 50px;
             max-width: 900px;
         }
 
@@ -153,8 +165,9 @@
             max-width: 600px;
         }
 
+        /* CONTACTO */
         .contact {
-            padding: 160px 50px;
+            padding: 0 50px;
             max-width: 900px;
         }
 
@@ -190,6 +203,7 @@
             transition: background 0.25s ease;
         }
 
+        /* FOOTER */
         footer {
             padding: 80px 50px;
             text-align: center;
