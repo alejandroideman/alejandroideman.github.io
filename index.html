@@ -3,20 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Film 35mm – Portfolio Analógico</title>
+<title>Cyberpunk Neon Noir – Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
 
 <style>
 /* ---------------------- */
 /* VARIABLES DE COLOR     */
 /* ---------------------- */
 :root {
-  --bg: #f4efe7;
-  --text: #2b2b2b;
-  --muted: #6f6f6f;
-  --portra-warm: #e8c9a1;
-  --portra-soft: rgba(232,201,161,0.35);
+  --bg: #05010a;
+  --text: #e8e8ff;
+  --muted: #8a8ab3;
+  --neon-pink: #ff2bdc;
+  --neon-blue: #00eaff;
+  --neon-purple: #a855ff;
 }
 
 /* ---------------------- */
@@ -33,7 +34,6 @@ body {
   color: var(--text);
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
-  line-height: 1.6;
 }
 
 /* ---------------------- */
@@ -44,10 +44,29 @@ body::after {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: url("https://www.transparenttextures.com/patterns/noise.png");
-  opacity: 0.18;
-  mix-blend-mode: multiply;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  opacity: 0.15;
+  mix-blend-mode: overlay;
   z-index: 9999;
+}
+
+/* ---------------------- */
+/* EFECTO SCANLINES       */
+/* ---------------------- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.03) 0px,
+    rgba(255,255,255,0.03) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  opacity: 0.2;
+  z-index: 9998;
 }
 
 /* ---------------------- */
@@ -61,16 +80,18 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255,255,255,0.6);
+  background: rgba(5,0,20,0.6);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   z-index: 1000;
 }
 
 .logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
-  letter-spacing: 0.05em;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.15em;
+  color: var(--neon-blue);
+  text-shadow: 0 0 12px var(--neon-blue);
 }
 
 .nav-links {
@@ -82,16 +103,17 @@ header {
   color: var(--muted);
   text-transform: uppercase;
   font-size: 0.75rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   transition: 0.3s;
 }
 
 .nav-links a:hover {
-  color: var(--text);
+  color: var(--neon-pink);
+  text-shadow: 0 0 10px var(--neon-pink);
 }
 
 /* ---------------------- */
-/* HERO ANALÓGICO         */
+/* HERO NEON NOIR         */
 /* ---------------------- */
 .hero {
   height: 100vh;
@@ -101,27 +123,28 @@ header {
   align-items: flex-end;
   padding: 4rem;
   padding-bottom: 8rem;
-  background-image: url("https://images.pexels.com/photos/6898853/pexels-photo-6898853.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  background-image: url("https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600");
   background-size: cover;
   background-position: center;
-  filter: saturate(1.05) contrast(0.95);
+  background-attachment: fixed;
+  filter: saturate(1.4) contrast(1.2);
 }
 
-/* Viñeteado suave */
+/* Halación neón */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.35) 100%);
+  background: radial-gradient(circle at 60% 30%, rgba(255,0,200,0.25), transparent 60%);
+  mix-blend-mode: screen;
 }
 
-/* Halación cálida */
+/* Viñeteado */
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 60% 30%, rgba(255,200,150,0.25), transparent 60%);
-  mix-blend-mode: screen;
+  background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.6) 100%);
 }
 
 .hero-content {
@@ -131,20 +154,21 @@ header {
 }
 
 .hero-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.2rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.4rem;
   line-height: 1.1;
   margin-bottom: 1rem;
-  color: #2b2b2b;
-  text-shadow: 0 0 20px rgba(255,255,255,0.4);
+  color: var(--neon-blue);
+  text-shadow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-blue);
 }
 
 .hero-title span {
-  color: #c28f5b;
+  color: var(--neon-pink);
+  text-shadow: 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink);
 }
 
 .hero-sub {
-  color: #4a4a4a;
+  color: var(--muted);
   font-size: 1rem;
   max-width: 500px;
   margin-bottom: 2rem;
@@ -162,26 +186,29 @@ header {
 }
 
 .btn-primary {
-  background: var(--portra-warm);
-  color: #3b2a1a;
+  background: var(--neon-pink);
+  color: #000;
+  box-shadow: 0 0 15px var(--neon-pink);
 }
 
 .btn-primary:hover {
-  background: #f3d9b8;
+  background: #ff5bf0;
+  box-shadow: 0 0 25px var(--neon-pink);
 }
 
 .btn-outline {
-  border: 1px solid var(--portra-warm);
-  color: #3b2a1a;
+  border: 1px solid var(--neon-blue);
+  color: var(--neon-blue);
   margin-left: 1rem;
+  text-shadow: 0 0 10px var(--neon-blue);
 }
 
 .btn-outline:hover {
-  background: var(--portra-soft);
+  background: rgba(0,255,255,0.1);
 }
 
 /* ---------------------- */
-/* PORTFOLIO 35MM         */
+/* PORTFOLIO CYBERPUNK    */
 /* ---------------------- */
 section {
   padding: 6rem 2rem;
@@ -190,10 +217,11 @@ section {
 }
 
 .section-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Orbitron', sans-serif;
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: #3b2a1a;
+  color: var(--neon-purple);
+  text-shadow: 0 0 12px var(--neon-purple);
 }
 
 .grid {
@@ -207,8 +235,8 @@ section {
   overflow: hidden;
   border-radius: 12px;
   cursor: pointer;
-  background: #fff;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  background: #0a0015;
+  box-shadow: 0 0 20px rgba(255,0,200,0.1);
 }
 
 .card img {
@@ -216,22 +244,22 @@ section {
   height: 100%;
   object-fit: cover;
   transition: 0.4s;
-  filter: saturate(1.1) contrast(0.95);
+  filter: saturate(1.3) contrast(1.2);
 }
 
 .card:hover img {
-  transform: scale(1.05);
-  filter: saturate(1.2) contrast(1.05);
+  transform: scale(1.08);
+  filter: saturate(1.6) contrast(1.4);
 }
 
 .card-title {
   position: absolute;
   bottom: 1rem;
   left: 1rem;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  color: #fff;
-  text-shadow: 0 0 10px rgba(0,0,0,0.6);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  color: var(--neon-blue);
+  text-shadow: 0 0 10px var(--neon-blue);
 }
 
 /* ---------------------- */
@@ -242,7 +270,7 @@ footer {
   padding: 2rem;
   color: var(--muted);
   font-size: 0.8rem;
-  border-top: 1px solid rgba(0,0,0,0.08);
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
 </style>
 </head>
@@ -260,33 +288,33 @@ footer {
 
 <section class="hero">
   <div class="hero-content">
-    <h1 class="hero-title">Fotografía <span>Film 35mm</span></h1>
-    <p class="hero-sub">Tonos cálidos, pieles suaves y la estética orgánica del Kodak Portra. Un enfoque analógico para historias reales.</p>
+    <h1 class="hero-title">Fotografía <span>Cyberpunk</span></h1>
+    <p class="hero-sub">Neón, lluvia, sombras profundas y atmósferas futuristas. Un universo visual inspirado en el Neon Noir.</p>
     <a class="btn btn-primary" href="#portfolio">Ver Portfolio</a>
     <a class="btn btn-outline" href="#contacto">Contacto</a>
   </div>
 </section>
 
 <section id="portfolio">
-  <h2 class="section-title">Rollos recientes</h2>
+  <h2 class="section-title">Escenas del Futuro</h2>
   <div class="grid">
     <div class="card">
-      <img src="https://images.pexels.com/photos/6898852/pexels-photo-6898852.jpeg?auto=compress&cs=tinysrgb&w=1600">
-      <div class="card-title">Portra Skin Tones</div>
+      <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1600">
+      <div class="card-title">Neon Streets</div>
     </div>
     <div class="card">
-      <img src="https://images.pexels.com/photos/6898853/pexels-photo-6898853.jpeg?auto=compress&cs=tinysrgb&w=1600">
-      <div class="card-title">Soft Window Light</div>
+      <img src="https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=1600">
+      <div class="card-title">Electric Dreams</div>
     </div>
     <div class="card">
-      <img src="https://images.pexels.com/photos/6898850/pexels-photo-6898850.jpeg?auto=compress&cs=tinysrgb&w=1600">
-      <div class="card-title">Warm Evening</div>
+      <img src="https://images.pexels.com/photos/3888151/pexels-photo-3888151.jpeg?auto=compress&cs=tinysrgb&w=1600">
+      <div class="card-title">Night Pulse</div>
     </div>
   </div>
 </section>
 
 <footer>
-  © 2026 – Fotografía Film 35mm · Tu Nombre
+  © 2026 – Neon Noir Photography · Tu Nombre
 </footer>
 
 </body>
