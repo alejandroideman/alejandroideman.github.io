@@ -6,16 +6,20 @@
     <title>rawcasamitjana – Galería Minimalista</title>
 
     <style>
+        /* TIPOGRAFÍA ESTILO APPLE */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
         body {
             margin: 0;
-            font-family: 'Inter', sans-serif;
-            background: #ffffff;
-            color: #111;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000;
+            color: #f5f5f7;
+            letter-spacing: -0.01em;
         }
 
         /* HEADER */
         header {
-            padding: 25px 40px;
+            padding: 28px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -23,16 +27,16 @@
         }
 
         .logo {
-            font-weight: 600;
-            letter-spacing: 0.05em;
+            font-weight: 500;
+            font-size: 1.1rem;
         }
 
         nav a {
-            margin-left: 25px;
+            margin-left: 28px;
             text-decoration: none;
-            color: #111;
-            opacity: 0.7;
-            transition: 0.2s;
+            color: #f5f5f7;
+            opacity: 0.6;
+            transition: opacity 0.25s ease;
         }
 
         nav a:hover {
@@ -41,105 +45,130 @@
 
         /* HERO */
         .hero {
-            padding: 120px 40px 80px;
-            text-align: left;
+            padding: 140px 50px 100px;
             max-width: 900px;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            font-weight: 600;
-            margin-bottom: 10px;
+            font-size: 3.2rem;
+            font-weight: 500;
+            margin-bottom: 12px;
         }
 
         .hero p {
-            font-size: 1.1rem;
-            opacity: 0.7;
+            font-size: 1.15rem;
+            opacity: 0.65;
             max-width: 600px;
+            line-height: 1.6;
         }
 
         /* GALERÍA */
         .gallery {
-            padding: 20px 40px 80px;
+            padding: 20px 50px 100px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 22px;
         }
 
         .gallery img {
             width: 100%;
-            border-radius: 6px;
+            border-radius: 10px;
             object-fit: cover;
-            transition: 0.3s ease;
+            transition: transform 0.35s ease, opacity 0.35s ease;
+            opacity: 0.9;
         }
 
         .gallery img:hover {
-            transform: scale(1.02);
+            transform: scale(1.03);
+            opacity: 1;
         }
 
         /* SOBRE MÍ */
         .about {
-            padding: 100px 40px;
+            padding: 120px 50px;
             max-width: 900px;
         }
 
         .about h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 2.2rem;
+            font-weight: 500;
+            margin-bottom: 12px;
         }
 
         .about p {
-            opacity: 0.75;
+            opacity: 0.65;
             line-height: 1.7;
             max-width: 600px;
         }
 
         /* CONTACTO */
         .contact {
-            padding: 100px 40px;
+            padding: 120px 50px;
             max-width: 900px;
         }
 
         .contact h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 2.2rem;
+            font-weight: 500;
+            margin-bottom: 12px;
         }
 
         .contact form {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            max-width: 400px;
+            gap: 14px;
+            max-width: 420px;
         }
 
         .contact input,
         .contact textarea {
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #111;
+            color: #f5f5f7;
             font-family: inherit;
         }
 
+        .contact textarea {
+            min-height: 130px;
+        }
+
         .contact button {
-            padding: 12px;
-            background: #111;
-            color: white;
+            padding: 14px;
+            background: #f5f5f7;
+            color: #000;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: 0.2s;
+            font-weight: 500;
+            transition: background 0.25s ease;
         }
 
         .contact button:hover {
-            background: #333;
+            background: #dcdcdc;
         }
 
         /* FOOTER */
         footer {
-            padding: 40px;
+            padding: 50px;
             text-align: center;
             font-size: 0.9rem;
-            opacity: 0.6;
+            opacity: 0.45;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 800px) {
+            header {
+                padding: 20px;
+            }
+            .hero, .gallery, .about, .contact {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .hero h1 {
+                font-size: 2.4rem;
+            }
         }
     </style>
 </head>
@@ -158,7 +187,7 @@
 
 <section class="hero" id="inicio">
     <h1>Fotografía minimalista</h1>
-    <p>Una selección de imágenes limpias, directas y llenas de carácter. Inspiración visual centrada en coches y líneas puras.</p>
+    <p>Una colección visual centrada en coches, líneas puras y estética silenciosa. Inspiración en su forma más simple.</p>
 </section>
 
 <section class="gallery" id="galeria">
@@ -178,8 +207,8 @@
 <section class="about" id="sobre">
     <h2>Sobre mí</h2>
     <p>
-        Soy rawcasamitjana, un fotógrafo apasionado por la estética minimalista y la belleza de las líneas automotrices.
-        Mi trabajo se centra en capturar coches desde una perspectiva limpia, elegante y emocional.
+        Soy rawcasamitjana, fotógrafo minimalista inspirado por la estética limpia y la elegancia del diseño automotriz.
+        Mi enfoque se basa en capturar formas, luces y sombras con la simplicidad como protagonista.
     </p>
 </section>
 
