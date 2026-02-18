@@ -3,43 +3,446 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Galería Fotográfica</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Galería Fotográfica Profesional</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1A1A1A;
+            background: #FFFFFF;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* HEADER */
+        .header {
+            position: fixed;
+            width: 100%;
+            padding: 18px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
+            z-index: 1000;
+            background: transparent;
+        }
+
+        .header.scrolled {
+            background: #FFFFFF;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 0.08em;
+        }
+
+        .menu a {
+            margin-left: 25px;
+            color: #1A1A1A;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .menu a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: #0A84FF;
+            transition: width 0.25s ease;
+        }
+
+        .menu a:hover::after {
+            width: 100%;
+        }
+
+        /* HERO */
+        .hero {
+            height: 100vh;
+            background: url('hero.jpg') center/cover no-repeat fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.75));
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            color: #FFFFFF;
+            text-shadow: 0 3px 15px rgba(0,0,0,0.6);
+            max-width: 700px;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 24px;
+            padding: 12px 32px;
+            background: #0A84FF;
+            color: #FFFFFF;
+            border-radius: 999px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            box-shadow: 0 10px 25px rgba(10,132,255,0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 14px 30px rgba(10,132,255,0.45);
+            background: #0066CC;
+        }
+
+        /* SECCIÓN DESTACADA */
+        .features {
+            padding: 80px 60px 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            background: #FFFFFF;
+        }
+
+        .feature-card {
+            background: #F2F4F7;
+            border-radius: 16px;
+            padding: 24px 22px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px rgba(0,0,0,0.06);
+            background: #E5F1FF;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .feature-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* GALERÍA */
+        .section-title {
+            padding: 20px 60px 0;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .section-subtitle {
+            padding: 0 60px 10px;
+            font-size: 0.95rem;
+            opacity: 0.7;
+        }
+
+        .gallery {
+            padding: 20px 60px 80px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 18px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 14px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.35s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.06);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 14px;
+            color: #FFFFFF;
+            font-size: 0.9rem;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* SOBRE MÍ */
+        .about {
+            display: grid;
+            grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+            padding: 80px 60px;
+            align-items: center;
+            gap: 40px;
+            background: #FFFFFF;
+        }
+
+        .about-img {
+            width: 100%;
+            border-radius: 18px;
+            object-fit: cover;
+        }
+
+        .about-text h2 {
+            font-size: 1.9rem;
+            margin-bottom: 10px;
+        }
+
+        .about-text p {
+            font-size: 0.98rem;
+            line-height: 1.7;
+            opacity: 0.85;
+        }
+
+        /* CONTACTO */
+        .contact {
+            padding: 80px 60px;
+            background: #F2F4F7;
+        }
+
+        .contact h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .contact p {
+            font-size: 0.95rem;
+            opacity: 0.75;
+            margin-bottom: 25px;
+        }
+
+        .contact form {
+            max-width: 520px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .contact input,
+        .contact textarea {
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid #D0D7E2;
+            font-family: inherit;
+            font-size: 0.95rem;
+            resize: vertical;
+        }
+
+        .contact textarea {
+            min-height: 120px;
+        }
+
+        .contact input:focus,
+        .contact textarea:focus {
+            outline: none;
+            border-color: #0A84FF;
+            box-shadow: 0 0 0 3px rgba(10,132,255,0.15);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 26px;
+            background: #111111;
+            color: #FFFFFF;
+            font-size: 0.85rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .header {
+                padding: 14px 20px;
+            }
+
+            .menu a {
+                margin-left: 14px;
+                font-size: 0.85rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.3rem;
+            }
+
+            .features,
+            .gallery,
+            .about,
+            .contact,
+            .section-title,
+            .section-subtitle {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .menu {
+                display: none; /* aquí podrías luego implementar un menú hamburguesa */
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<header>
+<header class="header" id="header">
     <div class="logo">MiMarca</div>
-    <nav>
-        <a href="#">Inicio</a>
-        <a href="#">Galería</a>
-        <a href="#">Sobre mí</a>
-        <a href="#">Contacto</a>
+    <nav class="menu">
+        <a href="#inicio">Inicio</a>
+        <a href="#galeria">Galería</a>
+        <a href="#sobre">Sobre mí</a>
+        <a href="#contacto">Contacto</a>
     </nav>
 </header>
 
-<section class="hero">
-    <div class="hero-text">
-        <h1>Capturando momentos que cuentan historias</h1>
-        <a class="btn" href="#galeria">Ver galería</a>
+<section class="hero" id="inicio">
+    <div class="hero-content">
+        <h1>Fotografía que captura emociones</h1>
+        <p>Explora mi mundo visual a través de retratos, paisajes y momentos únicos.</p>
+        <a href="#galeria" class="btn">Ver galería</a>
     </div>
 </section>
 
-<section id="galeria" class="gallery">
-    <img src="foto1.jpg" alt="">
-    <img src="foto2.jpg" alt="">
-    <img src="foto3.jpg" alt="">
-    <img src="foto4.jpg" alt="">
+<section class="features">
+    <div class="feature-card">
+        <div class="feature-title">Retratos</div>
+        <div class="feature-text">Rostros, miradas y gestos que cuentan historias íntimas y auténticas.</div>
+    </div>
+    <div class="feature-card">
+        <div class="feature-title">Paisajes</div>
+        <div class="feature-text">Escenarios naturales y urbanos que transmiten calma, fuerza y movimiento.</div>
+    </div>
+    <div class="feature-card">
+        <div class="feature-title">Viajes</div>
+        <div class="feature-text">Instantes capturados alrededor del mundo, llenos de color y cultura.</div>
+    </div>
+</section>
+
+<h2 class="section-title" id="galeria">Galería</h2>
+<p class="section-subtitle">Una selección de mis fotografías favoritas.</p>
+
+<section class="gallery">
+    <div class="gallery-item">
+        <img src="foto1.jpg" alt="Foto 1">
+        <div class="gallery-overlay">Retrato en luz natural</div>
+    </div>
+    <div class="gallery-item">
+        <img src="foto2.jpg" alt="Foto 2">
+        <div class="gallery-overlay">Atardecer en la costa</div>
+    </div>
+    <div class="gallery-item">
+        <img src="foto3.jpg" alt="Foto 3">
+        <div class="gallery-overlay">Calles de la ciudad</div>
+    </div>
+    <div class="gallery-item">
+        <img src="foto4.jpg" alt="Foto 4">
+        <div class="gallery-overlay">Montañas entre nubes</div>
+    </div>
+    <div class="gallery-item">
+        <img src="foto5.jpg" alt="Foto 5">
+        <div class="gallery-overlay">Viaje en blanco y negro</div>
+    </div>
+    <div class="gallery-item">
+        <img src="foto6.jpg" alt="Foto 6">
+        <div class="gallery-overlay">Detalles y texturas</div>
+    </div>
+</section>
+
+<section class="about" id="sobre">
+    <img src="yo.jpg" alt="Fotógrafo" class="about-img">
+    <div class="about-text">
+        <h2>Sobre mí</h2>
+        <p>
+            Soy un fotógrafo apasionado por capturar emociones reales y momentos irrepetibles.
+            Mi trabajo se centra en retratos, paisajes y fotografía de viajes, siempre buscando
+            una estética limpia, natural y atemporal. Cada imagen es una historia, y mi objetivo
+            es que quien la mire pueda sentirla, no solo verla.
+        </p>
+    </div>
+</section>
+
+<section class="contact" id="contacto">
+    <h2>Contacto</h2>
+    <p>Si te gustaría trabajar conmigo, reservar una sesión o simplemente saludar, escríbeme:</p>
+    <form>
+        <input type="text" placeholder="Nombre">
+        <input type="email" placeholder="Email">
+        <textarea placeholder="Mensaje"></textarea>
+        <button type="submit" class="btn">Enviar mensaje</button>
+    </form>
 </section>
 
 <footer>
     <p>© 2026 MiMarca – Todos los derechos reservados</p>
 </footer>
 
+<script>
+    // Efecto de cambio de header al hacer scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 60) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+</script>
+
 </body>
 </html>
-
-
 
 
 
