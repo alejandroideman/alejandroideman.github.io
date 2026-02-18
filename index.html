@@ -1,946 +1,301 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio Cinematográfico – Tu Nombre</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #05070b;
-      --bg-soft: #0b0f18;
-      --accent: #e0b56f;
-      --accent-soft: rgba(224, 181, 111, 0.2);
-      --text: #f5f5f5;
-      --muted: #9a9a9a;
-      --danger: #ff4b4b;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top, #151b2b 0, #05070b 55%);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    /* NAVBAR */
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 100;
-      background: linear-gradient(to bottom, rgba(5, 7, 11, 0.95), rgba(5, 7, 11, 0.6), transparent);
-      backdrop-filter: blur(12px);
-    }
-
-    .nav {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.2rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      letter-spacing: 0.18em;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-    }
-
-    .logo-mark {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      border: 1px solid var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.8rem;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-    }
-
-    .nav-links a {
-      position: relative;
-      color: var(--muted);
-      transition: color 0.25s ease;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -0.4rem;
-      width: 0;
-      height: 1px;
-      background: var(--accent);
-      transition: width 0.25s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      padding: 0.55rem 1.4rem;
-      border-radius: 999px;
-      border: 1px solid var(--accent);
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      background: radial-gradient(circle at top left, rgba(224, 181, 111, 0.18), transparent 55%);
-      cursor: pointer;
-      transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .nav-cta:hover {
-      background: var(--accent-soft);
-      transform: translateY(-1px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-    }
-
-    /* HERO */
-
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 7rem 1.5rem 4rem;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .hero-text {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-kicker {
-      font-size: 0.8rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 4vw, 3.6rem);
-      line-height: 1.1;
-      margin-bottom: 1.2rem;
-    }
-
-    .hero-title span {
-      color: var(--accent);
-    }
-
-    .hero-subtitle {
-      max-width: 32rem;
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-bottom: 2.2rem;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-    }
-
-    .hero-meta span {
-      position: relative;
-      padding-left: 1.4rem;
-    }
-
-    .hero-meta span::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      width: 0.8rem;
-      height: 1px;
-      background: var(--accent);
-      transform: translateY(-50%);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .btn-primary {
-      padding: 0.9rem 1.8rem;
-      border-radius: 999px;
-      border: none;
-      background: linear-gradient(135deg, var(--accent), #f3d49a);
-      color: #1a1207;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      cursor: pointer;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.85);
-    }
-
-    .btn-ghost {
-      padding: 0.85rem 1.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: rgba(5, 7, 11, 0.7);
-      color: var(--muted);
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-    }
-
-    .btn-ghost span {
-      font-size: 1.1rem;
-    }
-
-    .btn-ghost:hover {
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--text);
-      border-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .hero-note {
-      margin-top: 1.4rem;
-      font-size: 0.75rem;
-      color: var(--muted);
-      max-width: 22rem;
-    }
-
-    .hero-note strong {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .hero-media {
-      position: relative;
-    }
-
-    .hero-frame {
-      position: relative;
-      border-radius: 26px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.9),
-        0 0 0 1px rgba(255, 255, 255, 0.02);
-      background: radial-gradient(circle at top, #1c2233 0, #05070b 55%);
-      isolation: isolate;
-    }
-
-    .hero-video-overlay {
-      position: relative;
-      padding-top: 130%;
-      background-image: url("https://images.pexels.com/photos/6898859/pexels-photo-6898859.jpeg?auto=compress&cs=tinysrgb&w=1600");
-      background-size: cover;
-      background-position: center;
-      filter: saturate(1.1) contrast(1.05);
-    }
-
-    .hero-video-overlay::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, transparent 0, rgba(0, 0, 0, 0.4) 55%, rgba(0, 0, 0, 0.9) 100%);
-      mix-blend-mode: multiply;
-    }
-
-    .hero-tagline {
-      position: absolute;
-      left: 1.6rem;
-      bottom: 1.6rem;
-      z-index: 2;
-      color: #f5f5f5;
-    }
-
-    .hero-tagline span {
-      display: block;
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.4rem;
-    }
-
-    .hero-tagline h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-    }
-
-    .hero-badge {
-      position: absolute;
-      top: 1.4rem;
-      right: 1.4rem;
-      z-index: 2;
-      padding: 0.5rem 0.9rem;
-      border-radius: 999px;
-      background: rgba(5, 7, 11, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .hero-badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--danger);
-      box-shadow: 0 0 12px rgba(255, 75, 75, 0.9);
-    }
-
-    .hero-floating-card {
-      position: absolute;
-      left: -1.2rem;
-      bottom: 4.5rem;
-      z-index: 3;
-      padding: 0.9rem 1.1rem;
-      border-radius: 18px;
-      background: rgba(5, 7, 11, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(14px);
-      font-size: 0.75rem;
-      max-width: 12rem;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
-    }
-
-    .hero-floating-card strong {
-      display: block;
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.3rem;
-    }
-
-    .hero-floating-card span {
-      color: var(--muted);
-    }
-
-    .hero-glow {
-      position: absolute;
-      inset: -40%;
-      background: radial-gradient(circle at 20% 0, rgba(224, 181, 111, 0.18), transparent 55%);
-      opacity: 0.7;
-      mix-blend-mode: screen;
-      pointer-events: none;
-    }
-
-    /* SECTION WRAPPER */
-
-    section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem 4rem;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .section-kicker {
-      font-size: 0.75rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.6rem;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-    }
-
-    .section-subtitle {
-      max-width: 26rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    /* PORTFOLIO GRID */
-
-    .grid-portfolio {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.6rem;
-    }
-
-    .shot {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      background: #11141d;
-      cursor: pointer;
-      isolation: isolate;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .shot::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 55%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      mix-blend-mode: screen;
-    }
-
-    .shot img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: saturate(1.05) contrast(1.05);
-      transform: scale(1.02);
-      transition: transform 0.4s ease, filter 0.4s ease;
-    }
-
-    .shot-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent 55%);
-      opacity: 0.9;
-      transition: opacity 0.3s ease;
-    }
-
-    .shot-meta {
-      position: absolute;
-      left: 1.2rem;
-      right: 1.2rem;
-      bottom: 1.2rem;
-      z-index: 2;
-      color: #f5f5f5;
-    }
-
-    .shot-meta h3 {
-      font-size: 1rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .shot-meta span {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-    }
-
-    .shot-duration {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      z-index: 2;
-      padding: 0.3rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(5, 7, 11, 0.8);
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .shot:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.9);
-    }
-
-    .shot:hover::before {
-      opacity: 1;
-    }
-
-    .shot:hover img {
-      transform: scale(1.06);
-      filter: saturate(1.15) contrast(1.1);
-    }
-
-    .shot:hover .shot-overlay {
-      opacity: 0.7;
-    }
-
-    /* ABOUT / DIRECTOR NOTE */
-
-    .about {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 2.5rem;
-      align-items: center;
-    }
-
-    .about-text p {
-      font-size: 0.95rem;
-      color: var(--muted);
-      margin-bottom: 1.4rem;
-    }
-
-    .about-highlights {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.8rem;
-      margin-top: 0.5rem;
-    }
-
-    .about-highlight {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-    }
-
-    .about-highlight strong {
-      display: block;
-      font-size: 1.1rem;
-      color: var(--accent);
-      letter-spacing: normal;
-      text-transform: none;
-      margin-bottom: 0.1rem;
-    }
-
-    .about-card {
-      position: relative;
-      border-radius: 22px;
-      padding: 1.6rem 1.7rem;
-      background: radial-gradient(circle at top left, rgba(224, 181, 111, 0.16), #05070b);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.85);
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .about-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      margin-bottom: 0.6rem;
-      color: var(--text);
-    }
-
-    .about-card small {
-      display: block;
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-    }
-
-    .about-sign {
-      margin-top: 1.2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .about-sign span {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .about-sign strong {
-      color: var(--text);
-    }
-
-    .about-sign-line {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
-    }
-
-    /* CONTACT / CTA FINAL */
-
-    .contact {
-      text-align: center;
-      padding-bottom: 5rem;
-    }
-
-    .contact h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .contact p {
-      max-width: 30rem;
-      margin: 0 auto 2rem;
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
-
-    .contact-meta {
-      margin-top: 1.8rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .contact-meta a {
-      color: var(--accent);
-    }
-
-    /* FOOTER */
-
-    footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 1.5rem;
-      font-size: 0.75rem;
-      color: var(--muted);
-      text-align: center;
-      background: #05070b;
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 960px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-        padding-top: 6rem;
-      }
-
-      .hero-media {
-        order: -1;
-      }
-
-      .about {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .nav {
-        padding-inline: 1rem;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding-inline: 1rem;
-      }
-
-      .grid-portfolio {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 540px) {
-      .grid-portfolio {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-floating-card {
-        display: none;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cinematic Portfolio – Director of Photography</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+
+<style>
+/* ---------------------- */
+/* VARIABLES DE ESTILO   */
+/* ---------------------- */
+:root {
+  --bg: #050505;
+  --text: #eaeaea;
+  --accent: #d49f50;
+  --accent-soft: rgba(212,159,80,0.2);
+  --muted: #8b8b8b;
+}
+
+/* ---------------------- */
+/* RESET                  */
+/* ---------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ---------------------- */
+/* EFECTO DE GRANO        */
+/* ---------------------- */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+  z-index: 9999;
+}
+
+/* ---------------------- */
+/* NAVBAR                 */
+/* ---------------------- */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.logo {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.2em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+/* ---------------------- */
+/* HERO CINEMATOGRÁFICO   */
+/* ---------------------- */
+.hero {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 4rem;
+  padding-bottom: 8rem;
+  background-image: url("https://images.pexels.com/photos/6898859/pexels-photo-6898859.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  filter: saturate(1.1) contrast(1.05);
+}
+
+/* Capa de color cinematográfico */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
+}
+
+/* Formato anamórfico */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-top: 80px solid rgba(0,0,0,0.9);
+  border-bottom: 80px solid rgba(0,0,0,0.9);
+  pointer-events: none;
+}
+
+/* Texto del hero */
+.hero-content {
+  position: relative;
+  max-width: 700px;
+  z-index: 10;
+}
+
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: 3.4rem;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px rgba(0,0,0,0.8);
+}
+
+.hero-title span {
+  color: var(--accent);
+}
+
+.hero-sub {
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 500px;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+}
+
+.btn-primary:hover {
+  background: #f5d7a0;
+}
+
+.btn-outline {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  margin-left: 1rem;
+}
+
+.btn-outline:hover {
+  background: var(--accent-soft);
+}
+
+/* ---------------------- */
+/* PORTFOLIO GRID         */
+/* ---------------------- */
+section {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s;
+  filter: brightness(0.8) contrast(1.1);
+}
+
+.card:hover img {
+  transform: scale(1.08);
+  filter: brightness(1) contrast(1.2);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  opacity: 0.7;
+}
+
+.card-title {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+}
+
+/* ---------------------- */
+/* FOOTER                 */
+/* ---------------------- */
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+</style>
 </head>
+
 <body>
-  <!-- NAVBAR -->
-  <header>
-    <div class="nav">
-      <div class="logo">
-        <div class="logo-mark">TN</div>
-        <span>Tu Nombre</span>
-      </div>
-      <nav class="nav-links">
-        <a href="#portfolio">Portfolio</a>
-        <a href="#about">Sobre mí</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-      <button class="nav-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">
-        Reserva una sesión
-      </button>
+
+<header>
+  <div class="logo">TU NOMBRE</div>
+  <nav class="nav-links">
+    <a href="#portfolio">Portfolio</a>
+    <a href="#about">Sobre mí</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Fotografía <span>Cinematográfica</span></h1>
+    <p class="hero-sub">Narrativa visual, atmósferas densas y luz que cuenta historias. Un enfoque inspirado en el cine de autor.</p>
+    <a class="btn btn-primary" href="#portfolio">Ver Portfolio</a>
+    <a class="btn btn-outline" href="#contacto">Contacto</a>
+  </div>
+</section>
+
+<section id="portfolio">
+  <h2 class="section-title">Secuencias</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.pexels.com/photos/6898852/pexels-photo-6898852.jpeg?auto=compress&cs=tinysrgb&w=1600">
+      <div class="card-title">Neon Dreams</div>
     </div>
-  </header>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/6898853/pexels-photo-6898853.jpeg?auto=compress&cs=tinysrgb&w=1600">
+      <div class="card-title">Analog Heat</div>
+    </div>
+    <div class="card">
+      <img src="https://images.pexels.com/photos/6898850/pexels-photo-6898850.jpeg?auto=compress&cs=tinysrgb&w=1600">
+      <div class="card-title">Last Train</div>
+    </div>
+  </div>
+</section>
 
-  <!-- HERO -->
-  <main>
-    <section class="hero" id="inicio">
-      <div class="hero-text">
-        <div class="hero-kicker">Fotografía cinematográfica</div>
-        <h1 class="hero-title">
-          Historias contadas<br />
-          en <span>un solo fotograma</span>.
-        </h1>
-        <p class="hero-subtitle">
-          Portfolio profesional de fotografía con estética de cine. Luz, composición y narrativa visual pensadas
-          para campañas, retratos editoriales y proyectos personales con alma.
-        </p>
+<footer>
+  © 2026 – Fotografía Cinematográfica · Tu Nombre
+</footer>
 
-        <div class="hero-meta">
-          <span>Barcelona · Disponible para viajar</span>
-          <span>Comercial · Retrato · Cine stills</span>
-        </div>
-
-        <div class="hero-actions">
-          <button class="btn-primary" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">
-            Ver trabajos
-          </button>
-          <button class="btn-ghost" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">
-            <span>▶</span> Reel / Behind the scenes
-          </button>
-        </div>
-
-        <p class="hero-note">
-          <strong>Disponible para producciones 2026.</strong> Escríbeme para proyectos editoriales, campañas de marca
-          o rodajes donde necesites stills con lenguaje cinematográfico.
-        </p>
-      </div>
-
-      <div class="hero-media">
-        <div class="hero-glow"></div>
-        <div class="hero-frame">
-          <div class="hero-video-overlay"></div>
-          <div class="hero-badge">
-            <span class="hero-badge-dot"></span>
-            Grabando luz
-          </div>
-          <div class="hero-tagline">
-            <span>Frames de cine</span>
-            <h3>La atmósfera primero, el resto después.</h3>
-          </div>
-          <div class="hero-floating-card">
-            <strong>Selección 2024 · 2025</strong>
-            <span>
-              Una colección de escenas reales, rodadas en luz natural y mezcladas con toques de neón y tungsteno.
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PORTFOLIO -->
-    <section id="portfolio">
-      <div class="section-header">
-        <div>
-          <div class="section-kicker">Portfolio</div>
-          <h2 class="section-title">Secuencias que parecen fotogramas de película.</h2>
-        </div>
-        <p class="section-subtitle">
-          Una selección de proyectos personales y comerciales. Cada serie está pensada como una escena:
-          color, textura y atmósfera trabajan juntos para contar algo sin necesidad de diálogo.
-        </p>
-      </div>
-
-      <div class="grid-portfolio">
-        <!-- Cambia las imágenes por las tuyas -->
-        <article class="shot">
-          <img src="https://images.pexels.com/photos/6898852/pexels-photo-6898852.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Retrato nocturno urbano" />
-          <div class="shot-overlay"></div>
-          <div class="shot-duration">Serie · Nocturna</div>
-          <div class="shot-meta">
-            <h3>Neón en la ciudad</h3>
-            <span>Retrato · Luz mixta · Color grading frío</span>
-          </div>
-        </article>
-
-        <article class="shot">
-          <img src="https://images.pexels.com/photos/6898853/pexels-photo-6898853.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Retrato interior cinematográfico" />
-          <div class="shot-overlay"></div>
-          <div class="shot-duration">Campaña</div>
-          <div class="shot-meta">
-            <h3>Interior 35mm</h3>
-            <span>Moda · Luz de ventana · Tonos cálidos</span>
-          </div>
-        </article>
-
-        <article class="shot">
-          <img src="https://images.pexels.com/photos/6898850/pexels-photo-6898850.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Escena de pareja cinematográfica" />
-          <div class="shot-overlay"></div>
-          <div class="shot-duration">Editorial</div>
-          <div class="shot-meta">
-            <h3>Antes del último tren</h3>
-            <span>Narrativa · Pareja · Azul y ámbar</span>
-          </div>
-        </article>
-
-        <article class="shot">
-          <img src="https://images.pexels.com/photos/6898856/pexels-photo-6898856.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Retrato en coche" />
-          <div class="shot-overlay"></div>
-          <div class="shot-duration">Serie</div>
-          <div class="shot-meta">
-            <h3>Car lights</h3>
-            <span>Reflejos · Bokeh · Carácter analógico</span>
-          </div>
-        </article>
-
-        <article class="shot">
-          <img src="https://images.pexels.com/photos/6898858/pexels-photo-6898858.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Retrato con humo" />
-          <div class="shot-overlay"></div>
-          <div class="shot-duration">Personal</div>
-          <div class="shot-meta">
-            <h3>Humo y tungsteno</h3>
-            <span>Contraluz · Atmósfera · Drama</span>
-          </div>
-        </article>
-
-        <article class="shot">
-          <img src="https://images.pexels.com/photos/6898855/pexels-photo-6898855.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Retrato en pasillo" />
-          <div class="shot-overlay"></div>
-          <div class="shot-duration">Still de rodaje</div>
-          <div class="shot-meta">
-            <h3>Pasillo 2:1</h3>
-            <span>Formato cine · Profundidad · Siluetas</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="section-header">
-        <div>
-          <div class="section-kicker">Sobre mí</div>
-          <h2 class="section-title">Dirección de luz y fotografía con mirada de cine.</h2>
-        </div>
-      </div>
-
-      <div class="about">
-        <div class="about-text">
-          <p>
-            Trabajo la fotografía como si cada sesión fuera una escena: empezando por la atmósfera, la luz
-            y el ritmo, y después todo lo demás. Me inspiran el cine independiente, las películas de los 70
-            y la mezcla entre luz natural y artificial.
-          </p>
-          <p>
-            Colaboro con marcas, productoras y artistas que buscan imágenes con intención, no solo “fotos bonitas”.
-            Desde campañas pequeñas hasta rodajes más grandes, el objetivo es el mismo: construir un universo visual
-            coherente y honesto.
-          </p>
-
-          <div class="about-highlights">
-            <div class="about-highlight">
-              <strong>10+</strong>
-              Años fotografiando proyectos personales y comerciales.
-            </div>
-            <div class="about-highlight">
-              <strong>3</strong>
-              Ciudades base: Barcelona, Madrid, proyectos internacionales.
-            </div>
-            <div class="about-highlight">
-              <strong>∞</strong>
-              Ganas de seguir explorando nuevas historias.
-            </div>
-          </div>
-        </div>
-
-        <aside class="about-card">
-          <h3>Nota de dirección</h3>
-          <small>Cómo trabajo</small>
-          <p>
-            Antes de disparar, definimos juntos el tono de la historia: referencias de cine, paleta de color,
-            tipo de luz y ritmo de la sesión. A partir de ahí, construimos un plan flexible que deja espacio
-            para lo inesperado.
-          </p>
-          <div class="about-sign">
-            <span>Disponible para <strong>campañas, retratos y stills de rodaje</strong>.</span>
-            <div class="about-sign-line"></div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contacto" class="contact">
-      <div class="section-kicker">Contacto</div>
-      <h2>Cuéntame la historia que quieres rodar en fotos.</h2>
-      <p>
-        Escríbeme con una breve descripción del proyecto, fechas aproximadas, localización y referencias visuales
-        (películas, fotógrafos, campañas…). Te responderé con una propuesta de enfoque y disponibilidad.
-      </p>
-
-      <div class="hero-actions" style="justify-content:center; margin-top:1.5rem;">
-        <a class="btn-primary" href="mailto:tuemail@tudominio.com?subject=Proyecto%20de%20fotograf%C3%ADa%20cinematogr%C3%A1fica">
-          Escribir por email
-        </a>
-        <a class="btn-ghost" href="https://www.instagram.com/" target="_blank" rel="noreferrer">
-          <span>◎</span> Ver más en Instagram
-        </a>
-      </div>
-
-      <div class="contact-meta">
-        También disponible por mensaje directo en redes o videollamada previa a la sesión.<br />
-        Presupuestos adaptados a producciones pequeñas, medianas y editoriales.
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    © <span id="year"></span> Tu Nombre – Fotografía cinematográfica. Todos los derechos reservados.
-  </footer>
-
-  <script>
-    // Año dinámico
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
+
+
 
 
