@@ -10,7 +10,6 @@
 
         :root { color-scheme: light dark; }
 
-        /* SCROLL SUAVE TIPO iOS */
         html {
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
@@ -25,7 +24,6 @@
             transition: background 0.3s ease, color 0.3s ease;
         }
 
-        /* MODO CLARO */
         @media (prefers-color-scheme: light) {
             body { background: #f5f5f7; color: #111; }
             .header-blur { background: rgba(245,245,247,0.72); }
@@ -35,7 +33,6 @@
             .lightbox-caption { color: #111; }
         }
 
-        /* MODO OSCURO */
         @media (prefers-color-scheme: dark) {
             body { background: #000; color: #f5f5f7; }
             .header-blur { background: rgba(15,15,20,0.72); }
@@ -45,17 +42,13 @@
             .lightbox-caption { color: #f5f5f7; }
         }
 
-        /* ESPACIADO ENTRE SECCIONES */
         section {
             margin-top: 180px;
             margin-bottom: 180px;
         }
 
-        .hero {
-            margin-top: 80px !important;
-        }
+        .hero { margin-top: 80px !important; }
 
-        /* HEADER + BLUR macOS */
         header {
             position: sticky;
             top: 0;
@@ -86,7 +79,6 @@
 
         nav a:hover { opacity: 1; }
 
-        /* HAMBURGUESA */
         .burger {
             display: none;
             width: 24px;
@@ -110,9 +102,7 @@
 
         .nav-links { display: flex; gap: 40px; }
         .nav-links.mobile { display: none; flex-direction: column; padding: 10px 0 8px; gap: 20px; }
-        .nav-links.mobile a { padding: 6px 0; }
 
-        /* HERO */
         .hero {
             padding: 0 50px;
             max-width: 900px;
@@ -131,7 +121,6 @@
             line-height: 1.6;
         }
 
-        /* GALERÍA */
         .gallery {
             padding: 0 50px;
             display: grid;
@@ -153,7 +142,6 @@
             opacity: 1;
         }
 
-        /* FOTOGRAFÍA PRODUCTO */
         .producto {
             padding: 0 50px;
             max-width: 900px;
@@ -192,7 +180,7 @@
             opacity: 1;
         }
 
-        /* SOBRE MÍ — NUEVO DISEÑO */
+        /* SOBRE MÍ */
         .about {
             padding: 0 50px;
             max-width: 1000px;
@@ -218,7 +206,6 @@
             opacity: 0.75;
             line-height: 1.8;
             font-size: 1.1rem;
-            max-width: 650px;
         }
 
         .about-highlight {
@@ -230,7 +217,7 @@
             line-height: 1.7;
         }
 
-        /* CONTACTO — NUEVO DISEÑO */
+        /* CONTACTO */
         .contact {
             padding: 0 50px;
             max-width: 900px;
@@ -290,7 +277,6 @@
             transition: background 0.25s ease;
         }
 
-        /* FOOTER */
         footer {
             padding: 80px 50px;
             text-align: center;
@@ -298,7 +284,6 @@
             opacity: 0.45;
         }
 
-        /* FADE-IN */
         .fade-in {
             opacity: 0;
             transform: translateY(18px);
@@ -310,7 +295,6 @@
             transform: translateY(0);
         }
 
-        /* LIGHTBOX */
         .lightbox {
             position: fixed;
             inset: 0;
@@ -333,13 +317,11 @@
             max-width: 100%;
             max-height: 100%;
             border-radius: 12px;
-            display: block;
         }
 
         .lightbox-caption {
             margin-top: 10px;
             text-align: center;
-            font-size: 0.9rem;
             opacity: 0.8;
         }
 
@@ -352,11 +334,8 @@
             opacity: 0.8;
         }
 
-        /* RESPONSIVE */
         @media (max-width: 900px) {
-            .about {
-                grid-template-columns: 1fr;
-            }
+            .about { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 800px) {
@@ -478,4 +457,36 @@
     <div class="lightbox-content">
         <span class="lightbox-close" id="lightboxClose">✕</span>
         <img class="lightbox-img" id="lightboxImg" src="" alt="">
-        <div class="lightbox-caption" id="lightbox
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+</div>
+
+<script>
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    fadeElements.forEach(el => observer.observe(el));
+
+    const burger = document.getElementById('burger');
+    const mobileNav = document.getElementById('mobileNav');
+
+    burger.addEventListener('click', () => {
+        burger.classList.toggle('open');
+        mobileNav.classList.toggle('open');
+    });
+
+    mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            burger.classList.remove('open');
+            mobileNav.classList.remove('open');
+        });
+    });
+
+
