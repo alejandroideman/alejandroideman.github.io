@@ -10,6 +10,12 @@
 
         :root { color-scheme: light dark; }
 
+        /* SCROLL SUAVE TIPO iOS */
+        html {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
         body {
             margin: 0;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
@@ -68,7 +74,7 @@
 
         .logo { font-weight: 500; font-size: 1.1rem; }
 
-        nav { display: flex; align-items: center; gap: 40px; } /* ESPACIADO MENÚ */
+        nav { display: flex; align-items: center; gap: 40px; }
 
         nav a {
             text-decoration: none;
@@ -102,7 +108,7 @@
         .burger.open span:nth-child(2) { opacity: 0; }
         .burger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-        .nav-links { display: flex; gap: 40px; } /* ESPACIADO MENÚ */
+        .nav-links { display: flex; gap: 40px; }
         .nav-links.mobile { display: none; flex-direction: column; padding: 10px 0 8px; gap: 20px; }
         .nav-links.mobile a { padding: 6px 0; }
 
