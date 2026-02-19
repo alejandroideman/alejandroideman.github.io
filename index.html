@@ -192,59 +192,101 @@
             opacity: 1;
         }
 
-        /* SOBRE MÍ */
+        /* SOBRE MÍ — NUEVO DISEÑO */
         .about {
             padding: 0 50px;
-            max-width: 900px;
+            max-width: 1000px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            border-radius: 14px;
+            object-fit: cover;
         }
 
         .about h2 {
-            font-size: 2.2rem;
-            font-weight: 500;
-            margin-bottom: 12px;
+            font-size: 2.6rem;
+            font-weight: 600;
+            margin-bottom: 20px;
         }
 
         .about p {
-            opacity: 0.65;
-            line-height: 1.7;
-            max-width: 600px;
+            opacity: 0.75;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            max-width: 650px;
         }
 
-        /* CONTACTO */
+        .about-highlight {
+            margin-top: 30px;
+            padding-left: 20px;
+            border-left: 2px solid rgba(255,255,255,0.15);
+            opacity: 0.85;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* CONTACTO — NUEVO DISEÑO */
         .contact {
             padding: 0 50px;
             max-width: 900px;
         }
 
         .contact h2 {
-            font-size: 2.2rem;
-            font-weight: 500;
-            margin-bottom: 12px;
+            font-size: 2.6rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            opacity: 0.7;
+            max-width: 600px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            font-size: 1.05rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 40px;
+        }
+
+        .contact-methods div {
+            opacity: 0.8;
+            font-size: 1rem;
         }
 
         .contact form {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 18px;
             max-width: 420px;
         }
 
         .contact input,
         .contact textarea {
-            padding: 14px;
+            padding: 16px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-family: inherit;
+            font-size: 1rem;
         }
 
-        .contact textarea { min-height: 130px; }
+        .contact textarea { min-height: 140px; }
 
         .contact button {
-            padding: 14px;
+            padding: 16px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1rem;
             transition: background 0.25s ease;
         }
 
@@ -311,6 +353,12 @@
         }
 
         /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .about {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 800px) {
             .header-blur { padding: 14px 20px; }
             .hero, .gallery, .about, .contact, .producto { padding-left: 20px; padding-right: 20px; }
@@ -384,20 +432,40 @@
 </section>
 
 <section class="about fade-in" id="sobre">
-    <h2>Sobre mí</h2>
-    <p>
-        Soy rawcasamitjana, fotógrafo minimalista inspirado por la estética limpia y la elegancia del diseño automotriz.
-        Mi enfoque se basa en capturar formas, luces y sombras con la simplicidad como protagonista.
-    </p>
+    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=1200" alt="Retrato minimalista">
+
+    <div>
+        <h2>Sobre mí</h2>
+        <p>
+            Soy rawcasamitjana, fotógrafo minimalista especializado en capturar la esencia de los objetos, los vehículos y los espacios a través de la luz y la simplicidad.  
+            Mi trabajo se basa en una idea clara: **menos es más**. Busco eliminar el ruido visual para que cada imagen respire, cuente algo y transmita una sensación real.
+        </p>
+
+        <div class="about-highlight">
+            Me inspiran las líneas limpias, los materiales, los reflejos y los pequeños detalles que normalmente pasan desapercibidos.  
+            Mi objetivo es crear imágenes que no solo se miren, sino que se sientan.
+        </div>
+    </div>
 </section>
 
 <section class="contact fade-in" id="contacto">
     <h2>Contacto</h2>
+    <p>
+        Si quieres colaborar, necesitas contenido visual para tu marca o simplemente deseas hablar sobre un proyecto, estaré encantado de escucharte.  
+        Suelo responder en menos de 24 horas.
+    </p>
+
+    <div class="contact-methods">
+        <div>📧 Email: <strong>rawcasamitjana@gmail.com</strong></div>
+        <div>📸 Instagram: <strong>@rawcasamitjana</strong></div>
+        <div>📍 Barcelona, España</div>
+    </div>
+
     <form>
-        <input type="text" placeholder="Nombre">
-        <input type="email" placeholder="Email">
-        <textarea placeholder="Mensaje"></textarea>
-        <button>Enviar</button>
+        <input type="text" placeholder="Tu nombre">
+        <input type="email" placeholder="Tu email">
+        <textarea placeholder="Cuéntame qué necesitas"></textarea>
+        <button>Enviar mensaje</button>
     </form>
 </section>
 
@@ -410,72 +478,4 @@
     <div class="lightbox-content">
         <span class="lightbox-close" id="lightboxClose">✕</span>
         <img class="lightbox-img" id="lightboxImg" src="" alt="">
-        <div class="lightbox-caption" id="lightboxCaption"></div>
-    </div>
-</div>
-
-<script>
-    // Fade-in al hacer scroll
-    const fadeElements = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15 });
-
-    fadeElements.forEach(el => observer.observe(el));
-
-    // Menú hamburguesa
-    const burger = document.getElementById('burger');
-    const mobileNav = document.getElementById('mobileNav');
-
-    burger.addEventListener('click', () => {
-        burger.classList.toggle('open');
-        mobileNav.classList.toggle('open');
-    });
-
-    mobileNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            burger.classList.remove('open');
-            mobileNav.classList.remove('open');
-        });
-    });
-
-    // Lightbox tipo Apple Photos
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxCaption = document.getElementById('lightboxCaption');
-    const lightboxClose = document.getElementById('lightboxClose');
-
-    document.querySelectorAll('.gallery img, .producto-gallery img').forEach(img => {
-        img.addEventListener('click', () => {
-            lightboxImg.src = img.src;
-            lightboxCaption.textContent = img.alt || '';
-            lightbox.classList.add('open');
-        });
-    });
-
-    lightboxClose.addEventListener('click', () => {
-        lightbox.classList.remove('open');
-    });
-
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
-            lightbox.classList.remove('open');
-        }
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            lightbox.classList.remove('open');
-        }
-    });
-</script>
-
-</body>
-</html>
-
-
+        <div class="lightbox-caption" id="lightbox
