@@ -68,14 +68,14 @@
 
         .logo { font-weight: 500; font-size: 1.1rem; }
 
-        nav { display: flex; align-items: center; gap: 24px; }
+        nav { display: flex; align-items: center; gap: 40px; } /* ESPACIADO MENÚ */
 
         nav a {
             text-decoration: none;
             color: inherit;
             opacity: 0.6;
             transition: opacity 0.25s ease;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         nav a:hover { opacity: 1; }
@@ -102,8 +102,8 @@
         .burger.open span:nth-child(2) { opacity: 0; }
         .burger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-        .nav-links { display: flex; }
-        .nav-links.mobile { display: none; flex-direction: column; padding: 10px 0 8px; }
+        .nav-links { display: flex; gap: 40px; } /* ESPACIADO MENÚ */
+        .nav-links.mobile { display: none; flex-direction: column; padding: 10px 0 8px; gap: 20px; }
         .nav-links.mobile a { padding: 6px 0; }
 
         /* HERO */
@@ -143,6 +143,45 @@
         }
 
         .gallery img:hover {
+            transform: scale(1.03);
+            opacity: 1;
+        }
+
+        /* FOTOGRAFÍA PRODUCTO */
+        .producto {
+            padding: 0 50px;
+            max-width: 900px;
+        }
+
+        .producto h2 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .producto-desc {
+            opacity: 0.65;
+            line-height: 1.7;
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        .producto-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 32px;
+        }
+
+        .producto-gallery img {
+            width: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+            transition: transform 0.35s ease, opacity 0.35s ease;
+            opacity: 0.9;
+            cursor: zoom-in;
+        }
+
+        .producto-gallery img:hover {
             transform: scale(1.03);
             opacity: 1;
         }
@@ -268,7 +307,7 @@
         /* RESPONSIVE */
         @media (max-width: 800px) {
             .header-blur { padding: 14px 20px; }
-            .hero, .gallery, .about, .contact { padding-left: 20px; padding-right: 20px; }
+            .hero, .gallery, .about, .contact, .producto { padding-left: 20px; padding-right: 20px; }
             .hero h1 { font-size: 2.4rem; }
             .nav-links.desktop { display: none; }
             .burger { display: flex; }
@@ -287,6 +326,7 @@
             <div class="nav-links desktop">
                 <a href="#inicio">Inicio</a>
                 <a href="#galeria">Galería</a>
+                <a href="#producto">Fotografía producto</a>
                 <a href="#sobre">Sobre mí</a>
                 <a href="#contacto">Contacto</a>
             </div>
@@ -300,6 +340,7 @@
     <div class="nav-links mobile" id="mobileNav">
         <a href="#inicio">Inicio</a>
         <a href="#galeria">Galería</a>
+        <a href="#producto">Fotografía producto</a>
         <a href="#sobre">Sobre mí</a>
         <a href="#contacto">Contacto</a>
     </div>
@@ -319,6 +360,21 @@
     <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=1200" alt="Interior de coche">
     <img src="https://images.unsplash.com/photo-1502872364588-894d7d6ddfab?w=1200" alt="Coche deportivo azul">
     <img src="https://images.unsplash.com/photo-1518552781628-0f49c2a9b6e0?w=1200" alt="Coche retro">
+</section>
+
+<section class="producto fade-in" id="producto">
+    <h2>Fotografía de producto</h2>
+    <p class="producto-desc">
+        Una selección de imágenes centradas en productos, texturas y detalles. 
+        Estilo limpio, iluminación controlada y estética minimalista.
+    </p>
+
+    <div class="producto-gallery">
+        <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=1200" alt="Producto minimalista 1">
+        <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=1200" alt="Producto minimalista 2">
+        <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=1200" alt="Producto minimalista 3">
+        <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=1200" alt="Producto minimalista 4">
+    </div>
 </section>
 
 <section class="about fade-in" id="sobre">
@@ -388,7 +444,7 @@
     const lightboxCaption = document.getElementById('lightboxCaption');
     const lightboxClose = document.getElementById('lightboxClose');
 
-    document.querySelectorAll('.gallery img').forEach(img => {
+    document.querySelectorAll('.gallery img, .producto-gallery img').forEach(img => {
         img.addEventListener('click', () => {
             lightboxImg.src = img.src;
             lightboxCaption.textContent = img.alt || '';
