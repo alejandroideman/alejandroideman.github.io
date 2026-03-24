@@ -21,35 +21,169 @@ body {
     transition: background .3s ease, color .3s ease;
 }
 
+@media (prefers-color-scheme: light) {
+    body { background: #f5f5f7; color: #111; }
+    .header-blur { background: rgba(245,245,247,0.72); }
+    .contact input, .contact textarea { background: #fff; color: #111; }
+    .contact button { background: #111; color: #f5f5f7; }
+    .contact button:hover { background: #333; }
+    .lightbox-caption { color: #111; }
+}
+
+@media (prefers-color-scheme: dark) {
+    body { background: #000; color: #f5f5f7; }
+    .header-blur { background: rgba(15,15,20,0.72); }
+    .contact input, .contact textarea { background: #111; color: #f5f5f7; }
+    .contact button { background: #f5f5f7; color: #000; }
+    .contact button:hover { background: #dcdcdc; }
+    .lightbox-caption { color: #f5f5f7; }
+}
+
 section { margin: 180px 0; }
 .hero { margin-top: 80px !important; }
 
-/* --------- TARIFAS --------- */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
-.tarifas {
+.header-blur {
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    padding: 18px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo { font-weight: 500; font-size: 1.1rem; }
+
+nav { display: flex; align-items: center; gap: 40px; }
+
+nav a {
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.6;
+    transition: opacity .25s ease;
+    font-size: 1rem;
+}
+
+nav a:hover { opacity: 1; }
+
+.burger {
+    display: none;
+    width: 24px;
+    height: 18px;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.burger span {
+    height: 2px;
+    width: 100%;
+    background: currentColor;
+    border-radius: 999px;
+    transition: transform .25s ease, opacity .25s ease;
+}
+
+.burger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.nav-links { display: flex; gap: 40px; }
+.nav-links.mobile { display: none; flex-direction: column; gap: 20px; padding: 10px 0; }
+
+.hero, .gallery, .producto, .about, .contact, .tarifas {
     padding: 0 50px;
-    max-width: 1100px;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
 }
 
+.hero h1 { font-size: 3.2rem; font-weight: 500; margin-bottom: 12px; }
+.hero p { font-size: 1.15rem; opacity: .65; max-width: 600px; line-height: 1.6; }
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 32px;
+}
+
+.gallery img, .producto-gallery img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform .35s ease, opacity .35s ease;
+    opacity: .9;
+    cursor: zoom-in;
+}
+
+.gallery img:hover, .producto-gallery img:hover {
+    transform: scale(1.03);
+    opacity: 1;
+}
+
+.producto h2 { font-size: 2.2rem; font-weight: 500; margin-bottom: 12px; }
+.producto-desc { opacity: .65; line-height: 1.7; max-width: 600px; margin-bottom: 40px; }
+
+.producto-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 32px;
+}
+
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about img {
+    width: 100%;
+    border-radius: 14px;
+    object-fit: cover;
+}
+
+.about h2 { font-size: 2.6rem; font-weight: 600; margin-bottom: 20px; }
+.about p { opacity: .75; line-height: 1.8; font-size: 1.1rem; }
+.about-highlight {
+    margin-top: 30px;
+    padding-left: 20px;
+    border-left: 2px solid rgba(255,255,255,0.15);
+    opacity: .85;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* ---------- TARIFAS ---------- */
+
 .tarifas h2 {
     font-size: 2.6rem;
+    font-weight: 600;
     margin-bottom: 20px;
+}
+
+.tarifas p {
+    opacity: .7;
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 40px;
 }
 
 .tarifas-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 30px;
-    margin-top: 40px;
 }
 
 .tarifa-card {
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 16px;
     padding: 30px;
-    backdrop-filter: blur(10px);
     transition: transform .3s ease, border .3s ease;
 }
 
@@ -58,15 +192,9 @@ section { margin: 180px 0; }
     border: 1px solid rgba(255,255,255,0.3);
 }
 
-.tarifa-card h3 {
-    margin: 0 0 10px;
-    font-weight: 500;
-}
+.tarifa-card h3 { margin: 0 0 10px; font-weight: 500; }
 
-.precio {
-    font-size: 2rem;
-    margin: 10px 0 20px;
-}
+.precio { font-size: 2rem; margin: 10px 0 20px; }
 
 .tarifa-card ul {
     padding: 0;
@@ -75,9 +203,7 @@ section { margin: 180px 0; }
     line-height: 1.7;
 }
 
-.tarifa-card ul li {
-    margin-bottom: 8px;
-}
+.tarifa-card ul li { margin-bottom: 8px; }
 
 .tarifa-card button {
     margin-top: 20px;
@@ -89,79 +215,86 @@ section { margin: 180px 0; }
     cursor: pointer;
 }
 
-/* resto de tu CSS original... */
+.contact h2 { font-size: 2.6rem; font-weight: 600; margin-bottom: 20px; }
+
+/* resto igual... */
 </style>
 </head>
 
 <body>
 
 <header>
-    <div class="header-blur">
-        <div class="logo">rawcasamitjana</div>
-        <nav>
-            <div class="nav-links desktop">
-                <a href="#inicio">Inicio</a>
-                <a href="#galeria">Galería</a>
-                <a href="#producto">Fotografía producto</a>
-                <a href="#tarifas">Tarifas</a>
-                <a href="#sobre">Sobre mí</a>
-                <a href="#contacto">Contacto</a>
-            </div>
-        </nav>
-    </div>
+<div class="header-blur">
+<div class="logo">rawcasamitjana</div>
+<nav>
+<div class="nav-links desktop">
+<a href="#inicio">Inicio</a>
+<a href="#galeria">Galería</a>
+<a href="#producto">Fotografía producto</a>
+<a href="#tarifas">Tarifas</a>
+<a href="#sobre">Sobre mí</a>
+<a href="#contacto">Contacto</a>
+</div>
+<div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+</div>
+
+<div class="nav-links mobile" id="mobileNav">
+<a href="#inicio">Inicio</a>
+<a href="#galeria">Galería</a>
+<a href="#producto">Fotografía producto</a>
+<a href="#tarifas">Tarifas</a>
+<a href="#sobre">Sobre mí</a>
+<a href="#contacto">Contacto</a>
+</div>
 </header>
 
 <section class="hero fade-in" id="inicio">
-    <h1>Fotografía minimalista</h1>
-    <p>Una colección visual centrada en coches, líneas puras y estética silenciosa.</p>
+<h1>Fotografía minimalista</h1>
+<p>Una colección visual centrada en coches, líneas puras y estética silenciosa. Inspiración en su forma más simple.</p>
 </section>
 
-<!-- ---------------- TARIFAS ---------------- -->
-
+<!-- TARIFAS -->
 <section class="tarifas fade-in" id="tarifas">
-    <h2>Tarifas</h2>
-    <p>Planes flexibles según las necesidades de tu proyecto.</p>
+<h2>Tarifas</h2>
+<p>Planes flexibles según las necesidades de cada proyecto fotográfico.</p>
 
-    <div class="tarifas-grid">
+<div class="tarifas-grid">
+<div class="tarifa-card">
+<h3>Sesión básica</h3>
+<div class="precio">120€</div>
+<ul>
+<li>1 hora de sesión</li>
+<li>10 fotografías editadas</li>
+<li>Entrega en 48h</li>
+</ul>
+<button>Solicitar</button>
+</div>
 
-        <div class="tarifa-card">
-            <h3>Sesión básica</h3>
-            <div class="precio">120€</div>
-            <ul>
-                <li>1 hora de sesión</li>
-                <li>10 fotografías editadas</li>
-                <li>Entrega en 48h</li>
-            </ul>
-            <button>Solicitar</button>
-        </div>
+<div class="tarifa-card">
+<h3>Sesión estándar</h3>
+<div class="precio">250€</div>
+<ul>
+<li>2 horas de sesión</li>
+<li>25 fotografías editadas</li>
+<li>Edición profesional</li>
+</ul>
+<button>Solicitar</button>
+</div>
 
-        <div class="tarifa-card">
-            <h3>Sesión estándar</h3>
-            <div class="precio">250€</div>
-            <ul>
-                <li>2 horas de sesión</li>
-                <li>25 fotografías editadas</li>
-                <li>Edición profesional</li>
-            </ul>
-            <button>Solicitar</button>
-        </div>
-
-        <div class="tarifa-card">
-            <h3>Sesión premium</h3>
-            <div class="precio">450€</div>
-            <ul>
-                <li>Hasta 4 horas</li>
-                <li>Fotos ilimitadas</li>
-                <li>Edición avanzada</li>
-                <li>Entrega prioritaria</li>
-            </ul>
-            <button>Solicitar</button>
-        </div>
-
-    </div>
+<div class="tarifa-card">
+<h3>Sesión premium</h3>
+<div class="precio">450€</div>
+<ul>
+<li>Hasta 4 horas</li>
+<li>Fotos ilimitadas</li>
+<li>Edición avanzada</li>
+<li>Entrega prioritaria</li>
+</ul>
+<button>Solicitar</button>
+</div>
+</div>
 </section>
 
-<!-- resto de tu web sigue igual -->
-</body>
-</html>
+<!-- el resto de tu código original sigue exactamente igual -->
 
