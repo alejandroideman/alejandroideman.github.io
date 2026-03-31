@@ -4,7 +4,12 @@
   <meta charset="UTF-8" />
   <title>Servicios Profesionales de Seguridad Informática</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <style>
+    /* ============================================================
+       ESTILOS COMPLETOS (DARK, PROFESIONAL, CORPORATIVO)
+       ============================================================ */
+
     :root {
       --bg-main: #050814;
       --bg-alt: #0b1020;
@@ -46,6 +51,10 @@
       flex-direction: column;
     }
 
+    /* ============================================================
+       NAVBAR
+       ============================================================ */
+
     header {
       border-bottom: 1px solid rgba(148,163,184,0.12);
       backdrop-filter: blur(18px);
@@ -84,14 +93,6 @@
       overflow: hidden;
     }
 
-    .brand-logo::after {
-      content: "";
-      position: absolute;
-      inset: 1px;
-      border-radius: 12px;
-      border: 1px solid rgba(148,163,184,0.35);
-    }
-
     .brand-logo span {
       font-size: 0.9rem;
       font-weight: 700;
@@ -120,28 +121,8 @@
       color: var(--text-muted);
     }
 
-    .nav-links a {
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      transition: var(--transition-fast);
-    }
-
     .nav-links a:hover {
       color: var(--text-main);
-      border-color: rgba(148,163,184,0.35);
-      background: rgba(15,23,42,0.9);
-    }
-
-    .nav-cta {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .nav-cta span {
-      font-size: 0.8rem;
-      color: var(--text-muted);
     }
 
     .btn-primary {
@@ -152,12 +133,7 @@
       color: #e5f0ff;
       font-size: 0.85rem;
       font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
       box-shadow: 0 12px 30px rgba(37,99,235,0.55);
       transition: var(--transition-fast);
     }
@@ -165,16 +141,11 @@
     .btn-primary:hover {
       transform: translateY(-1px);
       box-shadow: 0 18px 40px rgba(37,99,235,0.7);
-      filter: brightness(1.05);
     }
 
-    .btn-primary span.icon {
-      font-size: 1rem;
-    }
-
-    main {
-      flex: 1;
-    }
+    /* ============================================================
+       HERO
+       ============================================================ */
 
     .hero {
       max-width: var(--max-width);
@@ -186,36 +157,13 @@
       align-items: center;
     }
 
-    .hero-kicker {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--accent);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.25rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(37,99,235,0.5);
-      background: radial-gradient(circle at 0 0, rgba(59,130,246,0.25), transparent 55%);
-    }
-
-    .hero-kicker-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 6px rgba(34,197,94,0.25);
-    }
-
     .hero-title {
       margin-top: 1.4rem;
       font-size: clamp(2.2rem, 3vw, 2.7rem);
       line-height: 1.15;
-      letter-spacing: 0.02em;
     }
 
-    .hero-title span.highlight {
+    .highlight {
       background: linear-gradient(120deg, #60a5fa, #a855f7);
       -webkit-background-clip: text;
       color: transparent;
@@ -228,184 +176,14 @@
       max-width: 32rem;
     }
 
-    .hero-badges {
-      margin-top: 1.6rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    .badge {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.35);
-      padding: 0.25rem 0.75rem;
-      background: rgba(15,23,42,0.85);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .badge-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #38bdf8;
-    }
-
-    .hero-actions {
-      margin-top: 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-      align-items: center;
-    }
-
-    .btn-ghost {
-      border-radius: var(--radius-pill);
-      padding: 0.55rem 1.2rem;
-      border: 1px solid rgba(148,163,184,0.4);
-      background: rgba(15,23,42,0.9);
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      cursor: pointer;
-      transition: var(--transition-fast);
-    }
-
-    .btn-ghost:hover {
-      border-color: rgba(148,163,184,0.8);
-      color: var(--text-main);
-      background: rgba(15,23,42,1);
-    }
-
-    .hero-note {
-      margin-top: 0.8rem;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .hero-right {
-      position: relative;
-    }
-
-    .hero-card {
-      background: radial-gradient(circle at top left, rgba(59,130,246,0.18), transparent 55%),
-                  radial-gradient(circle at bottom right, rgba(168,85,247,0.18), transparent 55%),
-                  var(--card-bg);
-      border-radius: 26px;
-      padding: 1.6rem 1.5rem;
-      border: 1px solid rgba(148,163,184,0.35);
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.1rem;
-    }
-
-    .hero-card-title {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-muted);
-    }
-
-    .hero-card-chip {
-      font-size: 0.72rem;
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(34,197,94,0.5);
-      color: #bbf7d0;
-      background: rgba(22,163,74,0.18);
-    }
-
-    .hero-metrics {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.9rem;
-      margin-bottom: 1.2rem;
-    }
-
-    .metric {
-      padding: 0.7rem 0.8rem;
-      border-radius: 16px;
-      background: rgba(15,23,42,0.9);
-      border: 1px solid rgba(148,163,184,0.3);
-    }
-
-    .metric-label {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 0.25rem;
-    }
-
-    .metric-value {
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    .metric-tag {
-      margin-top: 0.15rem;
-      font-size: 0.7rem;
-      color: #a5b4fc;
-    }
-
-    .hero-services-mini {
-      margin-top: 0.4rem;
-      padding-top: 0.8rem;
-      border-top: 1px dashed rgba(148,163,184,0.4);
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.6rem;
-    }
-
-    .mini-item {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .mini-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--accent);
-    }
-
-    .hero-glow {
-      position: absolute;
-      inset: -40%;
-      background: radial-gradient(circle at 10% 0, rgba(59,130,246,0.25), transparent 55%),
-                  radial-gradient(circle at 90% 100%, rgba(236,72,153,0.25), transparent 55%);
-      opacity: 0.4;
-      pointer-events: none;
-      mix-blend-mode: screen;
-    }
+    /* ============================================================
+       SECCIONES GENERALES
+       ============================================================ */
 
     .section {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 1.5rem 1.5rem 3.5rem;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 1.5rem;
-      margin-bottom: 1.8rem;
+      padding: 3rem 1.5rem;
     }
 
     .section-title {
@@ -425,55 +203,31 @@
       font-size: 0.9rem;
       color: var(--text-muted);
       max-width: 26rem;
+      margin-top: 0.5rem;
     }
 
+    /* ============================================================
+       SERVICIOS
+       ============================================================ */
+
     .services-grid {
+      margin-top: 2rem;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.4rem;
     }
 
     .service-card {
-      background: radial-gradient(circle at top, rgba(15,23,42,0.9), rgba(15,23,42,1));
+      background: var(--card-bg);
       border-radius: var(--radius-lg);
       padding: 1.2rem 1.1rem;
       border: 1px solid rgba(148,163,184,0.35);
-      position: relative;
-      overflow: hidden;
       transition: var(--transition-fast);
-    }
-
-    .service-card::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background: radial-gradient(circle at top, rgba(59,130,246,0.18), transparent 55%);
-      opacity: 0;
-      transition: var(--transition-fast);
-      pointer-events: none;
     }
 
     .service-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 18px 40px rgba(15,23,42,0.9);
-      border-color: rgba(59,130,246,0.7);
-    }
-
-    .service-card:hover::before {
-      opacity: 1;
-    }
-
-    .service-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
-      background: rgba(15,23,42,0.9);
-      border: 1px solid rgba(148,163,184,0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      margin-bottom: 0.7rem;
+      border-color: var(--accent);
     }
 
     .service-title {
@@ -496,45 +250,15 @@
       gap: 0.25rem;
     }
 
-    .service-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.35rem;
-    }
-
-    .service-list li::before {
-      content: "•";
-      color: #60a5fa;
-      font-size: 0.9rem;
-      line-height: 1.2;
-    }
-
-    .service-tag {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 0.7rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.5);
-      color: var(--text-muted);
-      background: rgba(15,23,42,0.9);
-    }
+    /* ============================================================
+       ENFOQUE PROFESIONAL
+       ============================================================ */
 
     .section-alt {
       background: radial-gradient(circle at top, rgba(15,23,42,0.9), #020617);
       border-top: 1px solid rgba(15,23,42,1);
       border-bottom: 1px solid rgba(15,23,42,1);
-    }
-
-    .section-alt-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
       padding: 3rem 1.5rem;
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 2.2rem;
-      align-items: center;
     }
 
     .pill-list {
@@ -550,7 +274,6 @@
       border-radius: 999px;
       border: 1px solid rgba(148,163,184,0.4);
       color: var(--text-muted);
-      background: rgba(15,23,42,0.9);
     }
 
     .checklist {
@@ -561,24 +284,9 @@
       color: var(--text-muted);
     }
 
-    .check-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
-
-    .check-icon {
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(34,197,94,0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      color: #bbf7d0;
-      margin-top: 0.1rem;
-    }
+    /* ============================================================
+       CONTACTO
+       ============================================================ */
 
     .contact-card {
       background: rgba(15,23,42,0.95);
@@ -586,33 +294,13 @@
       padding: 1.5rem 1.4rem;
       border: 1px solid rgba(148,163,184,0.4);
       box-shadow: 0 18px 40px rgba(0,0,0,0.7);
-    }
-
-    .contact-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .contact-text {
-      font-size: 0.84rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-
-    .contact-form {
-      display: grid;
-      gap: 0.7rem;
+      margin-top: 2rem;
     }
 
     .field {
       display: grid;
       gap: 0.25rem;
-    }
-
-    .field label {
-      font-size: 0.78rem;
-      color: var(--text-muted);
+      margin-bottom: 1rem;
     }
 
     .field input,
@@ -623,41 +311,11 @@
       padding: 0.55rem 0.7rem;
       font-size: 0.84rem;
       color: var(--text-main);
-      outline: none;
-      transition: var(--transition-fast);
-      resize: vertical;
-      min-height: 38px;
     }
 
-    .field input:focus,
-    .field textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 1px rgba(59,130,246,0.5);
-    }
-
-    .contact-footer {
-      margin-top: 0.7rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.8rem;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
-    .contact-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 5px rgba(34,197,94,0.25);
-    }
+    /* ============================================================
+       FOOTER
+       ============================================================ */
 
     footer {
       border-top: 1px solid rgba(15,23,42,1);
@@ -667,394 +325,202 @@
       background: #020617;
     }
 
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: var(--text-muted);
-      transition: var(--transition-fast);
-    }
-
-    .footer-links a:hover {
-      color: var(--text-main);
-    }
-
-    @media (max-width: 960px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-        padding-top: 2.5rem;
-      }
-      .hero-right {
-        order: -1;
-      }
-      .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .services-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .section-alt-inner {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    @media (max-width: 720px) {
-      .nav {
-        flex-wrap: wrap;
-      }
-      .nav-links {
-        display: none;
-      }
-      .hero {
-        padding-top: 2.2rem;
-      }
-      .services-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .hero-card {
-        border-radius: 20px;
-      }
-    }
   </style>
 </head>
+
 <body>
   <div class="page">
+
+    <!-- ============================================================
+         NAVBAR
+         ============================================================ -->
     <header>
       <nav class="nav">
         <div class="brand">
-          <div class="brand-logo">
-            <span>SEC</span>
-          </div>
+          <div class="brand-logo"><span>SEC</span></div>
           <div>
             <div class="brand-text-title">Seguridad Informática Profesional</div>
             <div class="brand-text-sub">Infraestructura · Redes · Ciberseguridad</div>
           </div>
         </div>
+
         <div class="nav-links">
           <a href="#servicios">Servicios</a>
           <a href="#enfoque">Enfoque</a>
           <a href="#contacto">Contacto</a>
         </div>
-        <div class="nav-cta">
-          <span>Consultoría a medida</span>
-          <button class="btn-primary">
-            <span class="icon">●</span>
-            Solicitar propuesta
-          </button>
-        </div>
+
+        <button class="btn-primary">Solicitar propuesta</button>
       </nav>
     </header>
 
-    <main>
-      <section class="hero">
-        <div>
-          <div class="hero-kicker">
-            <span class="hero-kicker-dot"></span>
-            Seguridad informática integral
-          </div>
-          <h1 class="hero-title">
-            Protege tu infraestructura,<br />
-            <span class="highlight">asegura tu futuro digital.</span>
-          </h1>
-          <p class="hero-subtitle">
-            Servicios profesionales de seguridad informática, redes, ciberseguridad, hardware y software.
-            Diseñados para empresas y profesionales que necesitan estabilidad, confidencialidad y control total
-            sobre su entorno tecnológico.
-          </p>
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero">
+      <div>
+        <h1 class="hero-title">
+          Protege tu infraestructura,<br />
+          <span class="highlight">asegura tu futuro digital.</span>
+        </h1>
 
-          <div class="hero-badges">
-            <div class="badge">
-              <span class="badge-dot"></span>
-              Auditorías y hardening de sistemas
-            </div>
-            <div class="badge">
-              <span class="badge-dot"></span>
-              Diseño y optimización de redes seguras
-            </div>
-            <div class="badge">
-              <span class="badge-dot"></span>
-              Soporte en hardware y software crítico
-            </div>
-          </div>
-
-          <div class="hero-actions">
-            <button class="btn-primary">
-              <span class="icon">➜</span>
-              Ver catálogo de servicios
-            </button>
-            <button class="btn-ghost">
-              Ver enfoque de trabajo
-            </button>
-          </div>
-          <p class="hero-note">
-            Evaluación inicial sin compromiso · Propuestas claras · Orientado a resultados medibles.
-          </p>
-        </div>
-
-        <div class="hero-right">
-          <div class="hero-card">
-            <div class="hero-card-header">
-              <div class="hero-card-title">Estado de seguridad</div>
-              <div class="hero-card-chip">Monitorización activa</div>
-            </div>
-            <div class="hero-metrics">
-              <div class="metric">
-                <div class="metric-label">Riesgo actual</div>
-                <div class="metric-value">Bajo</div>
-                <div class="metric-tag">Tras auditoría y hardening</div>
-              </div>
-              <div class="metric">
-                <div class="metric-label">Disponibilidad</div>
-                <div class="metric-value">99.9%</div>
-                <div class="metric-tag">Infraestructura optimizada</div>
-              </div>
-            </div>
-            <div class="hero-services-mini">
-              <div class="mini-item">
-                <span class="mini-dot"></span>
-                Seguridad informática y ciberseguridad avanzada
-              </div>
-              <div class="mini-item">
-                <span class="mini-dot"></span>
-                Redes LAN/WAN, VPN y segmentación segura
-              </div>
-              <div class="mini-item">
-                <span class="mini-dot"></span>
-                Mantenimiento de hardware y optimización de equipos
-              </div>
-              <div class="mini-item">
-                <span class="mini-dot"></span>
-                Gestión de software, licencias y automatización
-              </div>
-            </div>
-          </div>
-          <div class="hero-glow"></div>
-        </div>
-      </section>
-
-      <section id="servicios" class="section">
-        <div class="section-header">
-          <div>
-            <div class="section-title">Servicios</div>
-            <div class="section-subtitle">Cobertura completa de tu entorno tecnológico</div>
-          </div>
-          <p class="section-description">
-            Una oferta integral que combina seguridad informática, redes, ciberseguridad, hardware y software.
-            Todo alineado con las necesidades reales de tu negocio y con un enfoque profesional y escalable.
-          </p>
-        </div>
-
-        <div class="services-grid">
-          <article class="service-card">
-            <div class="service-tag">Seguridad</div>
-            <div class="service-icon">🔐</div>
-            <h3 class="service-title">Seguridad informática</h3>
-            <p class="service-text">
-              Protección de sistemas, datos y dispositivos frente a amenazas internas y externas, con políticas
-              adaptadas a tu organización.
-            </p>
-            <ul class="service-list">
-              <li>Evaluación completa del estado de seguridad.</li>
-              <li>Políticas de seguridad y gestión de accesos.</li>
-              <li>Protección frente a malware y ransomware.</li>
-              <li>Auditorías y análisis de vulnerabilidades.</li>
-              <li>Autenticación multifactor y buenas prácticas.</li>
-            </ul>
-          </article>
-
-          <article class="service-card">
-            <div class="service-tag">Infraestructura</div>
-            <div class="service-icon">🌐</div>
-            <h3 class="service-title">Redes y comunicaciones</h3>
-            <p class="service-text">
-              Diseño, implementación y optimización de redes seguras y eficientes, preparadas para el trabajo
-              híbrido y remoto.
-            </p>
-            <ul class="service-list">
-              <li>Redes LAN, WLAN y WAN a medida.</li>
-              <li>Configuración de routers, switches y firewalls.</li>
-              <li>Segmentación de redes para mayor seguridad.</li>
-              <li>Monitorización de tráfico y detección de anomalías.</li>
-              <li>Soluciones VPN para acceso remoto seguro.</li>
-            </ul>
-          </article>
-
-          <article class="service-card">
-            <div class="service-tag">Ciberdefensa</div>
-            <div class="service-icon">🛡️</div>
-            <h3 class="service-title">Ciberseguridad avanzada</h3>
-            <p class="service-text">
-              Estrategias de defensa proactiva, pruebas de intrusión y planes de respuesta ante incidentes
-              para minimizar el impacto de cualquier ataque.
-            </p>
-            <ul class="service-list">
-              <li>Análisis de riesgos y planes de respuesta.</li>
-              <li>Implementación de IDS/IPS.</li>
-              <li>Pentesting y simulaciones de ataque.</li>
-              <li>Hardening de servidores y servicios críticos.</li>
-              <li>Formación en ciberseguridad para equipos.</li>
-            </ul>
-          </article>
-
-          <article class="service-card">
-            <div class="service-tag">Hardware</div>
-            <div class="service-icon">🖥️</div>
-            <h3 class="service-title">Hardware profesional</h3>
-            <p class="service-text">
-              Mantenimiento, optimización y asesoramiento en hardware para garantizar rendimiento, estabilidad
-              y continuidad operativa.
-            </p>
-            <ul class="service-list">
-              <li>Diagnóstico y reparación de equipos.</li>
-              <li>Montaje de ordenadores a medida.</li>
-              <li>Mantenimiento preventivo y correctivo.</li>
-              <li>Actualización de componentes clave.</li>
-              <li>Asesoramiento en adquisición de hardware.</li>
-            </ul>
-          </article>
-
-          <article class="service-card">
-            <div class="service-tag">Software</div>
-            <div class="service-icon">💾</div>
-            <h3 class="service-title">Software y sistemas</h3>
-            <p class="service-text">
-              Gestión completa del software de tu organización: sistemas operativos, herramientas de trabajo
-              y automatización de tareas.
-            </p>
-            <ul class="service-list">
-              <li>Instalación y configuración de sistemas operativos.</li>
-              <li>Implementación de software empresarial.</li>
-              <li>Optimización de sistemas lentos o inestables.</li>
-              <li>Gestión de licencias y cumplimiento normativo.</li>
-              <li>Automatización mediante scripts personalizados.</li>
-            </ul>
-          </article>
-
-          <article class="service-card">
-            <div class="service-tag">Integral</div>
-            <div class="service-icon">⚙️</div>
-            <h3 class="service-title">Solución 360º</h3>
-            <p class="service-text">
-              Un enfoque global que integra seguridad, redes, hardware y software en una única estrategia
-              coherente y sostenible.
-            </p>
-            <ul class="service-list">
-              <li>Diseño de arquitectura tecnológica completa.</li>
-              <li>Integración de políticas de seguridad y operación.</li>
-              <li>Monitorización y mejora continua.</li>
-              <li>Escalabilidad según el crecimiento del negocio.</li>
-              <li>Acompañamiento técnico a largo plazo.</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section id="enfoque" class="section-alt">
-        <div class="section-alt-inner">
-          <div>
-            <div class="section-title">Enfoque profesional</div>
-            <h2 class="section-subtitle">Confidencialidad, precisión y resultados medibles</h2>
-            <p class="section-description">
-              Cada proyecto se aborda con una metodología clara: análisis, diseño, implementación y mejora
-              continua. El objetivo es que tu infraestructura sea segura, estable y preparada para el futuro.
-            </p>
-
-            <div class="pill-list">
-              <div class="pill">Confidencialidad absoluta</div>
-              <div class="pill">Soluciones escalables</div>
-              <div class="pill">Atención personalizada</div>
-              <div class="pill">Orientado a negocio</div>
-            </div>
-
-            <div class="checklist">
-              <div class="check-item">
-                <div class="check-icon">✓</div>
-                <div>
-                  Evaluación inicial detallada para entender el estado real de tu entorno y tus prioridades
-                  de negocio.
-                </div>
-              </div>
-              <div class="check-item">
-                <div class="check-icon">✓</div>
-                <div>
-                  Diseño de soluciones que integran seguridad, redes, hardware y software sin añadir
-                  complejidad innecesaria.
-                </div>
-              </div>
-              <div class="check-item">
-                <div class="check-icon">✓</div>
-                <div>
-                  Entrega de resultados medibles: reducción de riesgos, mejora de rendimiento y aumento de
-                  disponibilidad.
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div id="contacto" class="contact-card">
-            <h3 class="contact-title">Solicita una evaluación de seguridad</h3>
-            <p class="contact-text">
-              Describe brevemente tu entorno (número de equipos, tipo de negocio, necesidades principales) y
-              recibirás una propuesta adaptada.
-            </p>
-            <form class="contact-form">
-              <div class="field">
-                <label for="nombre">Nombre y empresa</label>
-                <input id="nombre" type="text" placeholder="Ej. Laura Gómez · TechCorp" />
-              </div>
-              <div class="field">
-                <label for="email">Correo electrónico</label>
-                <input id="email" type="email" placeholder="tuemail@empresa.com" />
-              </div>
-              <div class="field">
-                <label for="mensaje">Resumen de necesidades</label>
-                <textarea id="mensaje" rows="4" placeholder="Cuéntame brevemente tu situación actual y qué te gustaría mejorar."></textarea>
-              </div>
-              <div class="contact-footer">
-                <div class="contact-status">
-                  <span class="status-dot"></span>
-                  Respuesta habitual en menos de 24 horas laborables.
-                </div>
-                <button type="submit" class="btn-primary">
-                  <span class="icon">➜</span>
-                  Enviar consulta
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="footer-inner">
-        <div>© <span id="year"></span> Seguridad Informática Profesional. Todos los derechos reservados.</div>
-        <div class="footer-links">
-          <a href="#servicios">Servicios</a>
-          <a href="#enfoque">Enfoque</a>
-          <a href="#contacto">Contacto</a>
-        </div>
+        <p class="hero-subtitle">
+          Servicios profesionales de seguridad informática, redes, ciberseguridad, hardware y software.
+        </p>
       </div>
+    </section>
+
+    <!-- ============================================================
+         SERVICIOS
+         ============================================================ -->
+    <section id="servicios" class="section">
+      <div class="section-title">Servicios</div>
+      <div class="section-subtitle">Cobertura completa de tu entorno tecnológico</div>
+      <p class="section-description">
+        Seguridad informática, redes, ciberseguridad, hardware y software integrados en una solución profesional.
+      </p>
+
+      <div class="services-grid">
+
+        <article class="service-card">
+          <h3 class="service-title">Seguridad informática</h3>
+          <p class="service-text">Protección de sistemas, datos y dispositivos.</p>
+          <ul class="service-list">
+            <li>Auditorías</li>
+            <li>Hardening</li>
+            <li>Gestión de accesos</li>
+            <li>Antimalware</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <h3 class="service-title">Redes y comunicaciones</h3>
+          <p class="service-text">Diseño e implementación de redes seguras.</p>
+          <ul class="service-list">
+            <li>LAN/WAN/WLAN</li>
+            <li>VPN</li>
+            <li>Firewalls</li>
+            <li>Segmentación</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <h3 class="service-title">Ciberseguridad avanzada</h3>
+          <p class="service-text">Defensa proactiva y pruebas de intrusión.</p>
+          <ul class="service-list">
+            <li>Pentesting</li>
+            <li>IDS/IPS</li>
+            <li>Planes de respuesta</li>
+            <li>Formación</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <h3 class="service-title">Hardware profesional</h3>
+          <p class="service-text">Mantenimiento y optimización de equipos.</p>
+          <ul class="service-list">
+            <li>Reparación</li>
+            <li>Montaje a medida</li>
+            <li>Actualizaciones</li>
+            <li>Diagnóstico</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <h3 class="service-title">Software y sistemas</h3>
+          <p class="service-text">Gestión completa de software empresarial.</p>
+          <ul class="service-list">
+            <li>Instalación</li>
+            <li>Optimización</li>
+            <li>Automatización</li>
+            <li>Licencias</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <h3 class="service-title">Solución 360º</h3>
+          <p class="service-text">Integración total de seguridad y sistemas.</p>
+          <ul class="service-list">
+            <li>Arquitectura completa</li>
+            <li>Monitorización</li>
+            <li>Escalabilidad</li>
+            <li>Acompañamiento</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ENFOQUE PROFESIONAL (SEPARADO)
+         ============================================================ -->
+    <section id="enfoque" class="section-alt">
+      <div class="section-title">Enfoque profesional</div>
+      <h2 class="section-subtitle">Confidencialidad, precisión y resultados medibles</h2>
+
+      <p class="section-description">
+        Metodología basada en análisis, diseño, implementación y mejora continua.
+      </p>
+
+      <div class="pill-list">
+        <div class="pill">Confidencialidad absoluta</div>
+        <div class="pill">Soluciones escalables</div>
+        <div class="pill">Atención personalizada</div>
+        <div class="pill">Orientado a negocio</div>
+      </div>
+
+      <div class="checklist">
+        <div>✓ Evaluación inicial detallada</div>
+        <div>✓ Integración de seguridad, redes y sistemas</div>
+        <div>✓ Resultados medibles y mejora continua</div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACTO (SEPARADO)
+         ============================================================ -->
+    <section id="contacto" class="section">
+      <div class="section-title">Contacto</div>
+      <div class="section-subtitle">Solicita una evaluación de seguridad</div>
+      <p class="section-description">
+        Describe tu entorno y recibirás una propuesta adaptada.
+      </p>
+
+      <div class="contact-card">
+        <form class="contact-form">
+          <div class="field">
+            <label>Nombre y empresa</label>
+            <input type="text" placeholder="Ej. Laura Gómez · TechCorp" />
+          </div>
+
+          <div class="field">
+            <label>Correo electrónico</label>
+            <input type="email" placeholder="tuemail@empresa.com" />
+          </div>
+
+          <div class="field">
+            <label>Resumen de necesidades</label>
+            <textarea rows="4" placeholder="Describe tu situación actual."></textarea>
+          </div>
+
+          <button class="btn-primary">Enviar consulta</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FOOTER
+         ============================================================ -->
+    <footer>
+      <div>© <span id="year"></span> Seguridad Informática Profesional</div>
     </footer>
+
   </div>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
 
