@@ -1,189 +1,281 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portafolio de Ciberseguridad – Analista SOC & SecOps</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio SOC & SecOps | Ciberseguridad</title>
+
+    <!-- Tipografía profesional -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <style>
+        /* ====== ESTILOS GENERALES ====== */
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
             background: #0a0f1a;
             color: #e5e5e5;
+            overflow-x: hidden;
         }
-        header {
-            padding: 40px;
-            text-align: center;
-            background: #111827;
-            border-bottom: 1px solid #1f2937;
+
+        h1, h2, h3 {
+            font-weight: 600;
         }
-        header h1 {
-            margin: 0;
-            font-size: 32px;
-            letter-spacing: 2px;
-        }
-        header p {
-            margin-top: 10px;
-            color: #9ca3af;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-            background: #0f172a;
-            border-bottom: 1px solid #1f2937;
-        }
-        nav a {
-            color: #9ca3af;
+
+        a {
+            color: #8ab4ff;
             text-decoration: none;
+        }
+
+        /* ====== NAVBAR ====== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 40px;
+            background: rgba(10, 15, 26, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        nav .menu a {
+            margin-left: 20px;
             font-size: 14px;
+            opacity: 0.8;
         }
-        nav a:hover {
-            color: #fff;
+
+        nav .menu a:hover {
+            opacity: 1;
         }
-        section {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 20px;
+
+        /* ====== HERO ====== */
+        .hero {
+            padding: 160px 40px 120px;
+            text-align: center;
+            background: linear-gradient(180deg, #0a0f1a 0%, #0d1220 100%);
         }
-        h2 {
-            font-size: 24px;
+
+        .hero h1 {
+            font-size: 42px;
             margin-bottom: 10px;
-            border-left: 4px solid #4f46e5;
-            padding-left: 10px;
         }
-        .project-card {
-            background: #111827;
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #1f2937;
+
+        .hero p {
+            font-size: 18px;
+            color: #9ca3af;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .glow {
+            color: #8ab4ff;
+            text-shadow: 0 0 12px rgba(138,180,255,0.6);
+        }
+
+        /* ====== SECCIONES ====== */
+        section {
+            max-width: 1100px;
+            margin: 80px auto;
+            padding: 0 40px;
+        }
+
+        h2 {
+            font-size: 26px;
             margin-bottom: 20px;
+            border-left: 4px solid #4f46e5;
+            padding-left: 12px;
         }
+
+        /* ====== TARJETAS DE PROYECTO ====== */
+        .project-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 25px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            transition: 0.25s;
+            backdrop-filter: blur(6px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: #4f46e5;
+            box-shadow: 0 0 18px rgba(79,70,229,0.25);
+        }
+
         .project-card h3 {
             margin-top: 0;
             color: #a5b4fc;
         }
+
         .tag {
             display: inline-block;
-            background: #1f2937;
+            background: rgba(79,70,229,0.15);
+            border: 1px solid rgba(79,70,229,0.4);
             padding: 4px 10px;
             border-radius: 20px;
             font-size: 12px;
             margin-right: 6px;
             margin-top: 6px;
         }
+
+        /* ====== SKILLS ====== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .skill-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+            transition: 0.25s;
+        }
+
+        .skill-box:hover {
+            border-color: #4f46e5;
+            box-shadow: 0 0 14px rgba(79,70,229,0.25);
+        }
+
+        /* ====== CONTACTO ====== */
+        .contact-box {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: #4f46e5;
+            color: white;
+            border-radius: 8px;
+            transition: 0.25s;
+        }
+
+        .btn:hover {
+            background: #6d63ff;
+        }
+
+        /* ====== FOOTER ====== */
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 40px;
             color: #6b7280;
-            border-top: 1px solid #1f2937;
-            margin-top: 40px;
+            margin-top: 80px;
         }
     </style>
 </head>
-<body>
-    <header>
-        <h1>Portafolio Profesional</h1>
-        <p>Analista SOC · SecOps · Respuesta a Incidentes</p>
-    </header>
 
+<body>
+
+    <!-- NAVBAR -->
     <nav>
-        <a href="#sobre-mi">Sobre mí</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#skills">Skills</a>
-        <a href="#contacto">Contacto</a>
+        <div class="logo">SOC / SecOps Portfolio</div>
+        <div class="menu">
+            <a href="#sobre-mi">Sobre mí</a>
+            <a href="#proyectos">Proyectos</a>
+            <a href="#skills">Skills</a>
+            <a href="#contacto">Contacto</a>
+        </div>
     </nav>
 
+    <!-- HERO -->
+    <div class="hero">
+        <h1>Analista <span class="glow">SOC & SecOps</span></h1>
+        <p>Especializado en detección, respuesta a incidentes, hardening, automatización y mejora continua de la postura de seguridad.</p>
+    </div>
+
+    <!-- SOBRE MI -->
     <section id="sobre-mi">
         <h2>Sobre mí</h2>
         <p>
-            Soy un analista SOC y profesional de SecOps especializado en detección, análisis y respuesta a incidentes.
-            Mi enfoque combina la monitorización continua, la automatización de procesos y la mejora constante de la postura de seguridad.
-        </p>
-        <p>
-            He trabajado con entornos Linux y Windows, SIEM, EDR, correlación de eventos, hardening y creación de playbooks.
-            Mi objetivo es aportar valor real mediante la reducción de riesgos y la optimización de operaciones de seguridad.
+            Profesional de ciberseguridad con experiencia en operaciones de seguridad, análisis de amenazas,
+            correlación de eventos, automatización de procesos y hardening de sistemas.
+            Mi enfoque combina precisión técnica, pensamiento analítico y una visión clara de la seguridad operacional.
         </p>
     </section>
 
+    <!-- PROYECTOS -->
     <section id="proyectos">
-        <h2>Proyectos de Ciberseguridad</h2>
+        <h2>Proyectos destacados</h2>
 
         <div class="project-card">
-            <h3>Detección y análisis de actividad sospechosa en SIEM</h3>
-            <p>
-                Implementación de reglas de correlación para detectar movimientos laterales, intentos de escalada de privilegios y accesos anómalos.
-                Incluyó análisis de logs, creación de dashboards y documentación de procedimientos.
-            </p>
-            <div>
-                <span class="tag">SIEM</span>
-                <span class="tag">Correlación</span>
-                <span class="tag">Threat Hunting</span>
-            </div>
+            <h3>🔍 Detección avanzada en SIEM</h3>
+            <p>Creación de reglas de correlación para detectar movimientos laterales, escaladas de privilegios y actividad anómala.</p>
+            <span class="tag">SIEM</span>
+            <span class="tag">Threat Hunting</span>
+            <span class="tag">Detección</span>
         </div>
 
         <div class="project-card">
-            <h3>Playbook de respuesta a incidentes</h3>
-            <p>
-                Desarrollo de un playbook estructurado para incidentes de malware, accesos no autorizados y anomalías en endpoints.
-                Incluyó fases de contención, erradicación, recuperación y lecciones aprendidas.
-            </p>
-            <div>
-                <span class="tag">IR</span>
-                <span class="tag">SecOps</span>
-                <span class="tag">Automatización</span>
-            </div>
+            <h3>🛡️ Playbook de respuesta a incidentes</h3>
+            <p>Diseño de un playbook completo para incidentes de malware, accesos no autorizados y anomalías en endpoints.</p>
+            <span class="tag">IR</span>
+            <span class="tag">SecOps</span>
+            <span class="tag">Automatización</span>
         </div>
 
         <div class="project-card">
-            <h3>Hardening de servidores Linux y Windows</h3>
-            <p>
-                Aplicación de estándares CIS Benchmarks, configuración de auditorías, endurecimiento de SSH/RDP y segmentación de privilegios.
-            </p>
-            <div>
-                <span class="tag">Hardening</span>
-                <span class="tag">CIS</span>
-                <span class="tag">Seguridad de sistemas</span>
-            </div>
+            <h3>⚙️ Hardening de sistemas Linux/Windows</h3>
+            <p>Aplicación de CIS Benchmarks, auditorías, endurecimiento SSH/RDP y segmentación de privilegios.</p>
+            <span class="tag">Hardening</span>
+            <span class="tag">CIS</span>
+            <span class="tag">Seguridad</span>
         </div>
 
         <div class="project-card">
-            <h3>Automatización de análisis de logs</h3>
-            <p>
-                Creación de scripts para procesar, filtrar y clasificar eventos relevantes, reduciendo el tiempo de análisis manual.
-            </p>
-            <div>
-                <span class="tag">Scripting</span>
-                <span class="tag">Logs</span>
-                <span class="tag">SecOps</span>
-            </div>
+            <h3>📊 Automatización de análisis de logs</h3>
+            <p>Scripts para clasificar, filtrar y priorizar eventos críticos, reduciendo el tiempo de análisis manual.</p>
+            <span class="tag">Python</span>
+            <span class="tag">Bash</span>
+            <span class="tag">Logs</span>
         </div>
     </section>
 
+    <!-- SKILLS -->
     <section id="skills">
-        <h2>Skills Técnicos</h2>
-        <ul>
-            <li>SIEM (detección, correlación, dashboards)</li>
-            <li>EDR y análisis de endpoints</li>
-            <li>Hardening de sistemas</li>
-            <li>Respuesta a incidentes</li>
-            <li>Scripting (Bash, PowerShell, Python)</li>
-            <li>Threat Hunting</li>
-            <li>Gestión de vulnerabilidades</li>
-        </ul>
+        <h2>Skills técnicos</h2>
+
+        <div class="skills-grid">
+            <div class="skill-box">SIEM & Correlación</div>
+            <div class="skill-box">EDR & Análisis</div>
+            <div class="skill-box">Hardening</div>
+            <div class="skill-box">Respuesta a incidentes</div>
+            <div class="skill-box">Scripting (Bash, PowerShell, Python)</div>
+            <div class="skill-box">Threat Hunting</div>
+            <div class="skill-box">Gestión de vulnerabilidades</div>
+        </div>
     </section>
 
+    <!-- CONTACTO -->
     <section id="contacto">
         <h2>Contacto</h2>
-        <p>
-            Si deseas más información o colaborar en un proyecto, puedes escribirme a:
-        </p>
-        <p><strong>tu.correo@ejemplo.com</strong></p>
+        <div class="contact-box">
+            <p>¿Quieres colaborar o conocer más sobre mis proyectos?</p>
+            <p><strong>tu.correo@ejemplo.com</strong></p>
+            <a class="btn" href="mailto:tu.correo@ejemplo.com">Contactar</a>
+        </div>
     </section>
 
     <footer>
-        © Portafolio de Ciberseguridad – Analista SOC & SecOps
+        © 2026 · Portafolio SOC & SecOps · Ciberseguridad Profesional
     </footer>
+
 </body>
 </html>
