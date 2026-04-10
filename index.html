@@ -2,1042 +2,188 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <title>Administración Segura & SecOps – Portafolio Profesional</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Portafolio profesional centrado en Administración Segura de Sistemas y SecOps." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portafolio de Ciberseguridad – Analista SOC & SecOps</title>
     <style>
-        :root {
-            --bg: #050816;
-            --bg-alt: #0b1020;
-            --accent: #4f46e5;
-            --accent-soft: rgba(79, 70, 229, 0.15);
-            --text: #e5e7eb;
-            --muted: #9ca3af;
-            --border: #1f2933;
-            --danger: #ef4444;
-            --success: #22c55e;
-            --warning: #eab308;
-            --radius-lg: 18px;
-            --radius-md: 12px;
-            --radius-pill: 999px;
-            --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
-            --shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.35);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
         body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-                "Segoe UI", sans-serif;
-            background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
-            color: var(--text);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0a0f1a;
+            color: #e5e5e5;
         }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        main {
-            max-width: 1120px;
-            margin: 0 auto;
-            padding: 40px 20px 80px;
-        }
-
         header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-            margin-bottom: 40px;
+            padding: 40px;
+            text-align: center;
+            background: #111827;
+            border-bottom: 1px solid #1f2937;
         }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 14px;
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+            letter-spacing: 2px;
         }
-
-        .brand-logo {
-            width: 40px;
-            height: 40px;
-            border-radius: 14px;
-            background: conic-gradient(
-                from 180deg,
-                #4f46e5,
-                #22c55e,
-                #eab308,
-                #4f46e5
-            );
-            padding: 2px;
-            box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.3);
+        header p {
+            margin-top: 10px;
+            color: #9ca3af;
         }
-
-        .brand-logo-inner {
-            width: 100%;
-            height: 100%;
-            border-radius: 12px;
-            background: radial-gradient(circle at 20% 0, #1f2937 0, #020617 55%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 18px;
-            letter-spacing: 0.08em;
-            color: #e5e7eb;
-        }
-
-        .brand-text h1 {
-            font-size: 18px;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #e5e7eb;
-        }
-
-        .brand-text span {
-            display: block;
-            font-size: 12px;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            margin-top: 2px;
-        }
-
         nav {
             display: flex;
-            gap: 18px;
-            font-size: 14px;
-            color: var(--muted);
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            background: #0f172a;
+            border-bottom: 1px solid #1f2937;
         }
-
         nav a {
-            padding: 6px 10px;
-            border-radius: 999px;
-            transition: background 0.2s ease, color 0.2s ease;
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 14px;
         }
-
         nav a:hover {
-            background: rgba(15, 23, 42, 0.9);
-            color: #e5e7eb;
+            color: #fff;
         }
-
-        .hero {
-            display: grid;
-            grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
-            gap: 32px;
-            margin-bottom: 40px;
+        section {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
         }
-
-        .hero-main {
-            background: radial-gradient(circle at top left, #111827 0, #020617 55%);
-            border-radius: var(--radius-lg);
-            padding: 26px 26px 24px;
-            border: 1px solid rgba(31, 41, 55, 0.9);
-            box-shadow: var(--shadow-soft);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-main::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 0 0, rgba(79, 70, 229, 0.18), transparent 55%),
-                radial-gradient(circle at 100% 0, rgba(34, 197, 94, 0.12), transparent 55%);
-            opacity: 0.9;
-            pointer-events: none;
-        }
-
-        .hero-main-inner {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 4px 10px;
-            border-radius: var(--radius-pill);
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid rgba(148, 163, 184, 0.35);
-            color: var(--muted);
-            font-size: 12px;
-            margin-bottom: 16px;
-        }
-
-        .hero-pill-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 999px;
-            background: radial-gradient(circle at 30% 0, #22c55e 0, #16a34a 60%);
-            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
-        }
-
-        .hero-title {
-            font-size: 32px;
-            line-height: 1.2;
+        h2 {
+            font-size: 24px;
             margin-bottom: 10px;
-            letter-spacing: 0.02em;
+            border-left: 4px solid #4f46e5;
+            padding-left: 10px;
         }
-
-        .hero-title span {
+        .project-card {
+            background: #111827;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #1f2937;
+            margin-bottom: 20px;
+        }
+        .project-card h3 {
+            margin-top: 0;
             color: #a5b4fc;
         }
-
-        .hero-subtitle {
-            font-size: 15px;
-            color: var(--muted);
-            max-width: 520px;
-            margin-bottom: 18px;
-        }
-
-        .hero-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 18px;
-        }
-
-        .hero-tag {
-            font-size: 11px;
+        .tag {
+            display: inline-block;
+            background: #1f2937;
             padding: 4px 10px;
-            border-radius: var(--radius-pill);
-            border: 1px solid rgba(148, 163, 184, 0.35);
-            background: rgba(15, 23, 42, 0.9);
-            color: #e5e7eb;
-        }
-
-        .hero-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
+            border-radius: 20px;
             font-size: 12px;
-            color: var(--muted);
-            margin-bottom: 18px;
-        }
-
-        .hero-meta strong {
-            color: #e5e7eb;
-            font-weight: 500;
-        }
-
-        .hero-cta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .btn-primary {
-            padding: 8px 16px;
-            border-radius: var(--radius-pill);
-            border: none;
-            background: linear-gradient(135deg, #4f46e5, #22c55e);
-            color: #f9fafb;
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 12px 30px rgba(79, 70, 229, 0.45);
-        }
-
-        .btn-secondary {
-            padding: 8px 16px;
-            border-radius: var(--radius-pill);
-            border: 1px solid rgba(148, 163, 184, 0.4);
-            background: rgba(15, 23, 42, 0.9);
-            color: #e5e7eb;
-            font-size: 13px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .hero-side {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .card {
-            background: radial-gradient(circle at top, #020617 0, #020617 55%);
-            border-radius: var(--radius-lg);
-            padding: 18px 18px 16px;
-            border: 1px solid rgba(31, 41, 55, 0.9);
-            box-shadow: var(--shadow-subtle);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .card-title {
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: #9ca3af;
-        }
-
-        .card-badge {
-            font-size: 11px;
-            padding: 3px 8px;
-            border-radius: var(--radius-pill);
-            border: 1px solid rgba(148, 163, 184, 0.4);
-            color: #e5e7eb;
-        }
-
-        .card-body {
-            font-size: 13px;
-            color: var(--muted);
-        }
-
-        .card-body strong {
-            color: #e5e7eb;
-            font-weight: 500;
-        }
-
-        .pill-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 10px;
-        }
-
-        .pill {
-            font-size: 11px;
-            padding: 4px 8px;
-            border-radius: var(--radius-pill);
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid rgba(55, 65, 81, 0.9);
-            color: #e5e7eb;
-        }
-
-        .pill-danger {
-            border-color: rgba(239, 68, 68, 0.8);
-            color: #fecaca;
-        }
-
-        .pill-success {
-            border-color: rgba(34, 197, 94, 0.8);
-            color: #bbf7d0;
-        }
-
-        .pill-warning {
-            border-color: rgba(234, 179, 8, 0.8);
-            color: #fef3c7;
-        }
-
-        section {
-            margin-top: 40px;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            margin-bottom: 18px;
-        }
-
-        .section-title {
-            font-size: 18px;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: #9ca3af;
-        }
-
-        .section-subtitle {
-            font-size: 13px;
-            color: var(--muted);
-            max-width: 420px;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-        }
-
-        .timeline {
-            border-left: 1px solid rgba(55, 65, 81, 0.9);
-            padding-left: 16px;
-            margin-top: 4px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 18px;
-        }
-
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: -21px;
-            top: 4px;
-            width: 10px;
-            height: 10px;
-            border-radius: 999px;
-            background: radial-gradient(circle at 30% 0, #4f46e5 0, #1d4ed8 60%);
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.35);
-        }
-
-        .timeline-title {
-            font-size: 14px;
-            font-weight: 500;
-            color: #e5e7eb;
-        }
-
-        .timeline-meta {
-            font-size: 12px;
-            color: var(--muted);
-            margin-bottom: 4px;
-        }
-
-        .timeline-body {
-            font-size: 13px;
-            color: var(--muted);
-        }
-
-        .badge-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
+            margin-right: 6px;
             margin-top: 6px;
         }
-
-        .badge {
-            font-size: 11px;
-            padding: 3px 8px;
-            border-radius: var(--radius-pill);
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid rgba(55, 65, 81, 0.9);
-            color: #e5e7eb;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 16px;
-        }
-
-        .project-card {
-            background: radial-gradient(circle at top, #020617 0, #020617 55%);
-            border-radius: var(--radius-md);
-            padding: 14px 14px 12px;
-            border: 1px solid rgba(31, 41, 55, 0.9);
-            box-shadow: var(--shadow-subtle);
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .project-title {
-            font-size: 14px;
-            font-weight: 500;
-            color: #e5e7eb;
-        }
-
-        .project-meta {
-            font-size: 11px;
-            color: var(--muted);
-        }
-
-        .project-body {
-            font-size: 12px;
-            color: var(--muted);
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 4px;
-        }
-
-        .project-tag {
-            font-size: 10px;
-            padding: 3px 7px;
-            border-radius: var(--radius-pill);
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid rgba(55, 65, 81, 0.9);
-            color: #e5e7eb;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 2.2fr 1.8fr;
-            gap: 18px;
-        }
-
-        .skills-list {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 10px;
-        }
-
-        .skill-item {
-            font-size: 13px;
-            padding: 8px 10px;
-            border-radius: var(--radius-md);
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid rgba(31, 41, 55, 0.9);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #e5e7eb;
-        }
-
-        .skill-label {
-            font-weight: 400;
-        }
-
-        .skill-level {
-            font-size: 11px;
-            color: var(--muted);
-        }
-
-        .risk-matrix {
-            font-size: 12px;
-            color: var(--muted);
-        }
-
-        .risk-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 4px;
-        }
-
-        .risk-label {
-            font-weight: 500;
-            color: #e5e7eb;
-        }
-
-        .risk-pill {
-            font-size: 11px;
-            padding: 3px 8px;
-            border-radius: var(--radius-pill);
-            border: 1px solid rgba(55, 65, 81, 0.9);
-        }
-
-        .risk-pill.critical {
-            border-color: rgba(239, 68, 68, 0.9);
-            color: #fecaca;
-        }
-
-        .risk-pill.high {
-            border-color: rgba(234, 179, 8, 0.9);
-            color: #fef3c7;
-        }
-
-        .risk-pill.medium {
-            border-color: rgba(59, 130, 246, 0.9);
-            color: #bfdbfe;
-        }
-
-        .contact {
-            margin-top: 40px;
-            padding: 18px 18px 16px;
-            border-radius: var(--radius-lg);
-            border: 1px solid rgba(31, 41, 55, 0.9);
-            background: radial-gradient(circle at top, #020617 0, #020617 55%);
-            box-shadow: var(--shadow-subtle);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 18px;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .contact-text {
-            font-size: 13px;
-            color: var(--muted);
-            max-width: 520px;
-        }
-
-        .contact-text strong {
-            color: #e5e7eb;
-            font-weight: 500;
-        }
-
-        .contact-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
         footer {
-            max-width: 1120px;
-            margin: 0 auto;
-            padding: 0 20px 32px;
-            font-size: 11px;
+            text-align: center;
+            padding: 20px;
             color: #6b7280;
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-        }
-
-        @media (max-width: 960px) {
-            .hero {
-                grid-template-columns: minmax(0, 1fr);
-            }
-
-            .projects-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-
-            .skills-grid {
-                grid-template-columns: minmax(0, 1fr);
-            }
-        }
-
-        @media (max-width: 720px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            nav {
-                width: 100%;
-                justify-content: flex-start;
-                flex-wrap: wrap;
-            }
-
-            .projects-grid {
-                grid-template-columns: minmax(0, 1fr);
-            }
-
-            .grid-2 {
-                grid-template-columns: minmax(0, 1fr);
-            }
-
-            .skills-list {
-                grid-template-columns: minmax(0, 1fr);
-            }
-
-            .contact {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+            border-top: 1px solid #1f2937;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
-    <main>
-        <!-- ENCABEZADO -->
-        <header>
-            <div class="brand">
-                <div class="brand-logo">
-                    <div class="brand-logo-inner">AS</div>
-                </div>
-                <div class="brand-text">
-                    <h1>ADMINISTRACIÓN SEGURA</h1>
-                    <span>SECOPS · HARDENING · RESPUESTA A INCIDENTES</span>
-                </div>
+    <header>
+        <h1>Portafolio Profesional</h1>
+        <p>Analista SOC · SecOps · Respuesta a Incidentes</p>
+    </header>
+
+    <nav>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#skills">Skills</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <section id="sobre-mi">
+        <h2>Sobre mí</h2>
+        <p>
+            Soy un analista SOC y profesional de SecOps especializado en detección, análisis y respuesta a incidentes.
+            Mi enfoque combina la monitorización continua, la automatización de procesos y la mejora constante de la postura de seguridad.
+        </p>
+        <p>
+            He trabajado con entornos Linux y Windows, SIEM, EDR, correlación de eventos, hardening y creación de playbooks.
+            Mi objetivo es aportar valor real mediante la reducción de riesgos y la optimización de operaciones de seguridad.
+        </p>
+    </section>
+
+    <section id="proyectos">
+        <h2>Proyectos de Ciberseguridad</h2>
+
+        <div class="project-card">
+            <h3>Detección y análisis de actividad sospechosa en SIEM</h3>
+            <p>
+                Implementación de reglas de correlación para detectar movimientos laterales, intentos de escalada de privilegios y accesos anómalos.
+                Incluyó análisis de logs, creación de dashboards y documentación de procedimientos.
+            </p>
+            <div>
+                <span class="tag">SIEM</span>
+                <span class="tag">Correlación</span>
+                <span class="tag">Threat Hunting</span>
             </div>
-            <nav>
-                <a href="#sobre-mi">Sobre mí</a>
-                <a href="#experiencia">Experiencia</a>
-                <a href="#proyectos">Proyectos</a>
-                <a href="#skills">Skills</a>
-                <a href="#contacto">Contacto</a>
-            </nav>
-        </header>
+        </div>
 
-        <!-- HERO -->
-        <section class="hero">
-            <article class="hero-main">
-                <div class="hero-main-inner">
-                    <div class="hero-pill">
-                        <span class="hero-pill-dot"></span>
-                        <span>Diseño y opero infraestructuras seguras de extremo a extremo</span>
-                    </div>
-                    <h2 class="hero-title">
-                        Administración Segura & <span>SecOps</span> orientados a negocio.
-                    </h2>
-                    <p class="hero-subtitle">
-                        Especializado en proteger entornos críticos, automatizar controles de seguridad
-                        y alinear la operación diaria con marcos como
-                        <strong>Zero Trust</strong>, <strong>DevSecOps</strong> y
-                        <strong>seguridad por diseño</strong>.
-                    </p>
-
-                    <div class="hero-tags">
-                        <span class="hero-tag">Hardening de sistemas</span>
-                        <span class="hero-tag">Gestión de identidades y accesos</span>
-                        <span class="hero-tag">Monitorización y respuesta</span>
-                        <span class="hero-tag">Automatización de seguridad</span>
-                    </div>
-
-                    <div class="hero-meta">
-                        <span><strong>Rol:</strong> Administrador/a de Sistemas & SecOps</span>
-                        <span><strong>Enfoque:</strong> Seguridad operacional, continuidad y resiliencia</span>
-                    </div>
-
-                    <div class="hero-cta">
-                        <button class="btn-primary" onclick="document.getElementById('proyectos').scrollIntoView({behavior:'smooth'})">
-                            Ver proyectos clave
-                            <span>↘</span>
-                        </button>
-                        <button class="btn-secondary" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">
-                            Disponibilidad y contacto
-                        </button>
-                    </div>
-                </div>
-            </article>
-
-            <aside class="hero-side">
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-title">Perfil profesional</span>
-                        <span class="card-badge">Sobre mí</span>
-                    </div>
-                    <div class="card-body">
-                        <strong>Administrador/a de sistemas con mentalidad de seguridad</strong>,
-                        con experiencia en la construcción de entornos robustos, segmentados y
-                        monitorizados, donde la seguridad es parte del ciclo de vida y no un añadido
-                        de última hora.
-                        <div class="pill-row">
-                            <span class="pill">Sistemas & Redes</span>
-                            <span class="pill">SecOps</span>
-                            <span class="pill">Automatización</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <span class="card-title">Líneas de trabajo</span>
-                        <span class="card-badge">SecOps</span>
-                    </div>
-                    <div class="card-body">
-                        Diseño y operación de:
-                        <div class="pill-row">
-                            <span class="pill pill-danger">Gestión de vulnerabilidades</span>
-                            <span class="pill pill-warning">Gestión de parches</span>
-                            <span class="pill pill-success">Monitorización continua</span>
-                            <span class="pill">Playbooks de respuesta</span>
-                            <span class="pill">Control de acceso privilegiado</span>
-                        </div>
-                    </div>
-                </div>
-            </aside>
-        </section>
-
-        <!-- SOBRE MÍ -->
-        <section id="sobre-mi">
-            <div class="section-header">
-                <h3 class="section-title">SOBRE MÍ</h3>
-                <p class="section-subtitle">
-                    Una visión centrada en la seguridad operacional: desde la administración diaria
-                    de sistemas hasta la definición de controles, procesos y automatizaciones que
-                    reducen el riesgo y mejoran la resiliencia.
-                </p>
+        <div class="project-card">
+            <h3>Playbook de respuesta a incidentes</h3>
+            <p>
+                Desarrollo de un playbook estructurado para incidentes de malware, accesos no autorizados y anomalías en endpoints.
+                Incluyó fases de contención, erradicación, recuperación y lecciones aprendidas.
+            </p>
+            <div>
+                <span class="tag">IR</span>
+                <span class="tag">SecOps</span>
+                <span class="tag">Automatización</span>
             </div>
+        </div>
 
-            <div class="grid-2">
-                <article class="card">
-                    <div class="card-header">
-                        <span class="card-title">Resumen</span>
-                        <span class="card-badge">Perfil</span>
-                    </div>
-                    <div class="card-body">
-                        Soy un/a profesional de <strong>Administración Segura</strong> y
-                        <strong>SecOps</strong> con experiencia en:
-                        <ul style="margin-top: 8px; padding-left: 18px;">
-                            <li>Diseño y hardening de infraestructuras on‑prem y cloud.</li>
-                            <li>Definición de políticas de seguridad y controles técnicos.</li>
-                            <li>Automatización de tareas repetitivas y controles de cumplimiento.</li>
-                            <li>Monitorización, correlación de eventos y respuesta a incidentes.</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="card-header">
-                        <span class="card-title">Foco actual</span>
-                        <span class="card-badge">Evolución</span>
-                    </div>
-                    <div class="card-body">
-                        Actualmente estoy profundizando en:
-                        <ul style="margin-top: 8px; padding-left: 18px;">
-                            <li>Integración de seguridad en pipelines CI/CD (DevSecOps).</li>
-                            <li>Zero Trust, segmentación y gestión de identidades.</li>
-                            <li>Automatización de despliegues seguros y configuración declarativa.</li>
-                            <li>Mejora continua de procesos de SecOps y respuesta a incidentes.</li>
-                        </ul>
-                    </div>
-                </article>
+        <div class="project-card">
+            <h3>Hardening de servidores Linux y Windows</h3>
+            <p>
+                Aplicación de estándares CIS Benchmarks, configuración de auditorías, endurecimiento de SSH/RDP y segmentación de privilegios.
+            </p>
+            <div>
+                <span class="tag">Hardening</span>
+                <span class="tag">CIS</span>
+                <span class="tag">Seguridad de sistemas</span>
             </div>
-        </section>
+        </div>
 
-        <!-- EXPERIENCIA -->
-        <section id="experiencia">
-            <div class="section-header">
-                <h3 class="section-title">EXPERIENCIA</h3>
-                <p class="section-subtitle">
-                    Experiencias y responsabilidades que combinan administración de sistemas,
-                    seguridad operacional y mejora continua de la postura de seguridad.
-                </p>
+        <div class="project-card">
+            <h3>Automatización de análisis de logs</h3>
+            <p>
+                Creación de scripts para procesar, filtrar y clasificar eventos relevantes, reduciendo el tiempo de análisis manual.
+            </p>
+            <div>
+                <span class="tag">Scripting</span>
+                <span class="tag">Logs</span>
+                <span class="tag">SecOps</span>
             </div>
+        </div>
+    </section>
 
-            <div class="grid-2">
-                <article class="card">
-                    <div class="card-header">
-                        <span class="card-title">Administración Segura</span>
-                        <span class="card-badge">Sistemas</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <span class="timeline-dot"></span>
-                                <h4 class="timeline-title">Diseño de infraestructuras endurecidas</h4>
-                                <div class="timeline-meta">
-                                    Sistemas Linux/Windows · Segmentación · Control de acceso
-                                </div>
-                                <p class="timeline-body">
-                                    Implementación de estándares de hardening, separación de roles,
-                                    gestión de privilegios mínimos y segmentación de redes para
-                                    reducir la superficie de ataque y limitar el movimiento lateral.
-                                </p>
-                                <div class="badge-row">
-                                    <span class="badge">Hardening</span>
-                                    <span class="badge">RBAC</span>
-                                    <span class="badge">Seguridad de red</span>
-                                </div>
-                            </div>
+    <section id="skills">
+        <h2>Skills Técnicos</h2>
+        <ul>
+            <li>SIEM (detección, correlación, dashboards)</li>
+            <li>EDR y análisis de endpoints</li>
+            <li>Hardening de sistemas</li>
+            <li>Respuesta a incidentes</li>
+            <li>Scripting (Bash, PowerShell, Python)</li>
+            <li>Threat Hunting</li>
+            <li>Gestión de vulnerabilidades</li>
+        </ul>
+    </section>
 
-                            <div class="timeline-item">
-                                <span class="timeline-dot"></span>
-                                <h4 class="timeline-title">Gestión de parches y configuración</h4>
-                                <div class="timeline-meta">
-                                    Ciclo de vida · Cumplimiento · Automatización
-                                </div>
-                                <p class="timeline-body">
-                                    Definición de ventanas de mantenimiento, priorización de
-                                    vulnerabilidades y automatización de despliegues de parches,
-                                    asegurando trazabilidad y mínimos tiempos de exposición.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="card-header">
-                        <span class="card-title">SecOps</span>
-                        <span class="card-badge">Operaciones de seguridad</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <span class="timeline-dot"></span>
-                                <h4 class="timeline-title">Monitorización y detección</h4>
-                                <div class="timeline-meta">
-                                    Logs · Alertas · Correlación
-                                </div>
-                                <p class="timeline-body">
-                                    Diseño de casos de uso, reglas de alerta y paneles de
-                                    monitorización para detectar comportamientos anómalos,
-                                    accesos sospechosos y desviaciones de la línea base.
-                                </p>
-                                <div class="badge-row">
-                                    <span class="badge">SIEM</span>
-                                    <span class="badge">Detección temprana</span>
-                                </div>
-                            </div>
-
-                            <div class="timeline-item">
-                                <span class="timeline-dot"></span>
-                                <h4 class="timeline-title">Respuesta a incidentes</h4>
-                                <div class="timeline-meta">
-                                    Playbooks · Contención · Lecciones aprendidas
-                                </div>
-                                <p class="timeline-body">
-                                    Definición de playbooks, coordinación de acciones de contención,
-                                    análisis post‑incidente y aplicación de mejoras para evitar
-                                    recurrencias y reducir el impacto futuro.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- PROYECTOS -->
-        <section id="proyectos">
-            <div class="section-header">
-                <h3 class="section-title">PROYECTOS DESTACADOS</h3>
-                <p class="section-subtitle">
-                    Una selección de proyectos que reflejan mi enfoque práctico en
-                    Administración Segura y SecOps. Puedes adaptar los textos a tus proyectos reales.
-                </p>
-            </div>
-
-            <div class="projects-grid">
-                <article class="project-card">
-                    <h4 class="project-title">Plataforma de administración segura centralizada</h4>
-                    <div class="project-meta">Infraestructura · Hardening · Acceso remoto</div>
-                    <p class="project-body">
-                        Diseño de una plataforma centralizada para administrar servidores y
-                        endpoints con túneles seguros, autenticación robusta y registro detallado
-                        de acciones administrativas.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">Bastionado</span>
-                        <span class="project-tag">Acceso privilegiado</span>
-                        <span class="project-tag">Auditoría</span>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <h4 class="project-title">Pipeline de despliegue seguro</h4>
-                    <div class="project-meta">DevSecOps · Automatización</div>
-                    <p class="project-body">
-                        Integración de análisis de seguridad, escaneo de dependencias y
-                        comprobaciones de configuración en el pipeline de CI/CD, bloqueando
-                        despliegues que no cumplen los requisitos mínimos.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">CI/CD</span>
-                        <span class="project-tag">Escaneo de vulnerabilidades</span>
-                        <span class="project-tag">Políticas como código</span>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <h4 class="project-title">Marco de monitorización y respuesta</h4>
-                    <div class="project-meta">SecOps · Observabilidad</div>
-                    <p class="project-body">
-                        Definición de fuentes de logs críticas, normalización de eventos,
-                        correlación y playbooks de respuesta para incidentes frecuentes,
-                        reduciendo tiempos de detección y contención.
-                    </p>
-                    <div class="project-tags">
-                        <span class="project-tag">SIEM</span>
-                        <span class="project-tag">Playbooks</span>
-                        <span class="project-tag">Métricas de respuesta</span>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- SKILLS -->
-        <section id="skills">
-            <div class="section-header">
-                <h3 class="section-title">SKILLS & ENFOQUE</h3>
-                <p class="section-subtitle">
-                    Competencias técnicas y una visión clara de cómo priorizar riesgos,
-                    controles y esfuerzos en Administración Segura y SecOps.
-                </p>
-            </div>
-
-            <div class="skills-grid">
-                <article class="card">
-                    <div class="card-header">
-                        <span class="card-title">Competencias técnicas</span>
-                        <span class="card-badge">Skills</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="skills-list">
-                            <div class="skill-item">
-                                <span class="skill-label">Hardening de sistemas</span>
-                                <span class="skill-level">Avanzado</span>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-label">Gestión de identidades (IAM)</span>
-                                <span class="skill-level">Avanzado</span>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-label">Monitorización & SIEM</span>
-                                <span class="skill-level">Intermedio/Avanzado</span>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-label">Automatización & scripting</span>
-                                <span class="skill-level">Intermedio/Avanzado</span>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-label">Gestión de parches</span>
-                                <span class="skill-level">Avanzado</span>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-label">Respuesta a incidentes</span>
-                                <span class="skill-level">Intermedio/Avanzado</span>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="card-header">
-                        <span class="card-title">Matriz de enfoque</span>
-                        <span class="card-badge">Prioridades</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="risk-matrix">
-                            <div class="risk-row">
-                                <span class="risk-label">Superficie de ataque</span>
-                                <span class="risk-pill critical">Crítico reducirla</span>
-                            </div>
-                            <div class="risk-row">
-                                <span class="risk-label">Visibilidad & logs</span>
-                                <span class="risk-pill high">Alta prioridad</span>
-                            </div>
-                            <div class="risk-row">
-                                <span class="risk-label">Automatización</span>
-                                <span class="risk-pill medium">Clave para escalar</span>
-                            </div>
-                            <div class="risk-row">
-                                <span class="risk-label">Formación & cultura</span>
-                                <span class="risk-pill high">Esencial</span>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- CONTACTO -->
-        <section id="contacto" class="contact">
-            <div class="contact-text">
-                <strong>¿Hablamos sobre Administración Segura o SecOps?</strong><br />
-                Estoy abierto/a a colaborar en proyectos donde la seguridad operacional sea
-                una prioridad: diseño de infraestructuras seguras, mejora de procesos de
-                SecOps, automatización de controles o revisión de arquitecturas.
-            </div>
-            <div class="contact-actions">
-                <!-- Sustituye el mailto y/o añade tus enlaces reales -->
-                <a class="btn-primary" href="mailto:tu.correo@ejemplo.com">
-                    Contactar por correo
-                </a>
-                <a class="btn-secondary" href="#" target="_blank" rel="noopener">
-                    Ver perfil profesional / LinkedIn
-                </a>
-            </div>
-        </section>
-    </main>
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <p>
+            Si deseas más información o colaborar en un proyecto, puedes escribirme a:
+        </p>
+        <p><strong>tu.correo@ejemplo.com</strong></p>
+    </section>
 
     <footer>
-        <span>Administración Segura & SecOps · Portafolio profesional</span>
-        <span>Puedes adaptar este contenido con tus datos, logros y proyectos reales.</span>
+        © Portafolio de Ciberseguridad – Analista SOC & SecOps
     </footer>
 </body>
 </html>
-
